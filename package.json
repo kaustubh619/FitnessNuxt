@@ -1,0 +1,35 @@
+{
+  "name": "transformersfitnessacademy",
+  "version": "1.0.0",
+  "description": "My stunning Nuxt.js project",
+  "author": "Chiranjib Paul",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.8.4",
+    "@nuxtjs/axios": "^5.8.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cookie-universal-nuxt": "^2.0.18",
+    "js-cookie": "^2.2.1",
+    "nuxt": "^2.0.0",
+    "universal-cookie": "^4.0.2",
+    "vue2-perfect-scrollbar": "^1.2.1",
+    "vuejs-paginator": "^2.0.2"
+  },
+  "devDependencies": {
+    "@editorjs/editorjs": "^2.16.1",
+    "@editorjs/list": "^1.4.0",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "vue-jest": "^4.0.0-0"
+  }
+}

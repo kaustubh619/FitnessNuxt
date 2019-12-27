@@ -1,0 +1,20 @@
+@media print {
+    #mySidenav, .backIcon, .topnav, .footer, .printButton{
+        display: none!important;
+    }
+    .navbar-spacing{
+        padding: 0!important;
+    }
+    html, body {
+        height:100vh; 
+        margin: 0 !important; 
+        padding: 0 !important;
+        overflow: hidden;
+      }
+ }
+
+ @page { size: auto;  margin: 0mm; }
+
+ .print:last-child {
+    page-break-after: auto;
+}
