@@ -9,12 +9,18 @@
       <!-- <div class="container">
         <calc class="calculator" />
       </div> -->
+      <div class="container">
+        <button class="btn-bmr" @click="getBMRCalculator">
+          Calculate Your BMR
+        </button>
+        <button to="" class="btn-trainer">Find A Trainer</button>
+      </div>
       <div class="carousel-inner" role="listbox">
         <div
           v-for="(item, i) in allImages"
           :key="i"
           class="carousel-item"
-          :class="i === 0 ? 'active' : ''"
+          :class="i === 1 ? 'active' : ''"
         >
           <img :src="item.img" class="iheight w-100" />
         </div>
@@ -218,6 +224,14 @@
 
       activeCssClass(item) {
         return item === 0 ? 'active' : ''
+      },
+
+      getBMRCalculator: function() {
+        if (localStorage.getItem('token') !== null) {
+          this.$router.push('/bmr_calculator')
+        } else {
+          this.$store.commit('showLogin', true)
+        }
       }
     }
   }
@@ -398,5 +412,56 @@ h5 {
   .left-margin-lg {
     margin-left: -25px;
   }
+}
+
+.btn-bmr {
+  color: white;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -46%);
+  background-color: #f1be03;
+  padding: 14px 24px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+.btn-trainer {
+  color: white;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -54%);
+  background-color: #f1be03;
+  padding: 14px 24px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+@media (max-width: 37.5em) {
+  .btn-bmr {
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 30px;
+  }
+
+  .btn-trainer {
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 30px;
+  }
+}
+
+.btn-bmr:hover,
+.btn-trainer:hover {
+  background-color: white;
+  color: black;
+}
+
+.btn-bmr:focus,
+.btn-trainer:focus {
+  outline: none;
 }
 </style>

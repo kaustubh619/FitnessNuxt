@@ -28,24 +28,22 @@ export const mutations = {
   },
   category(state, selectedCat) {
     state.category = selectedCat
-    // console.log(state.category)
   }
 }
 
 export const getters = {}
 
 export const actions = {
-  // nuxtServerInit ({commit}, context) {
-
-  //     const cookies = cookie.parse(context.req.headers.cookie)
-  //     console.log(cookies.token)
-  //     if (cookies.hasOwnProperty('token')) {
-  //         commit('showLogin')
+  // nuxtServerInit({ commit }, context) {
+  //   return new Promise((resolve, reject) => {
+  //     const cookies = cookie.parse(context.req.headers.cookie || '')
+  //     if (cookies.hasOwnProperty('x-access-token')) {
+  //       commit('signin_user')
+  //       resolve(true)
+  //     } else {
+  //       resolve(false)
   //     }
-  //     if(cookie.token !== null) {
-  //         console.log('yipee')
-  //     }
-
+  //   })
   // },
 
   signup({ commit, state }, payload) {

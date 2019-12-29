@@ -27,23 +27,37 @@
             <span class="text-white">Total {{ count }} results</span>
           </div>
           <div class="row">
-            <div v-for="(x,y) in productList" :key="y" class="col-12 col-sm-6 col-lg-4 divheight">
+            <div
+              v-for="(x, y) in productList"
+              :key="y"
+              class="col-12 col-sm-6 col-lg-4 divheight"
+            >
               <div>
                 <div class="product2">
                   <img class="product" :src="imageURLs[y]" />
                   <div class="text-center product-name">
                     <p class="font showLG">
-                      <span v-for="(i,j) in 40" :key="j">{{ x.product_name[j] }}</span>
-                      <span style="font-size: 1.6rem; line-height: 0rem;">...</span>
+                      <span v-for="(i, j) in 40" :key="j">{{
+                        x.product_name[j]
+                      }}</span>
+                      <span style="font-size: 1.6rem; line-height: 0rem;"
+                        >...</span
+                      >
                     </p>
                     <p class="font showXS">
-                      <span v-for="(i,j) in 25" :key="j">{{ x.product_name[j] }}</span>
-                      <span style="font-size: 1.6rem; line-height: 0rem;">...</span>
+                      <span v-for="(i, j) in 25" :key="j">{{
+                        x.product_name[j]
+                      }}</span>
+                      <span style="font-size: 1.6rem; line-height: 0rem;"
+                        >...</span
+                      >
                     </p>
                     <p class="font m-0">₹{{ x.price }}</p>
                   </div>
                   <div class="buybtn m-2">
-                    <button type="button" class="btn btn-lg w-100">ADD TO CART +</button>
+                    <button type="button" class="btn btn-lg w-100">
+                      ADD TO CART +
+                    </button>
                   </div>
                 </div>
               </div>
@@ -58,7 +72,9 @@
               v-for="i in page_num"
               :key="i"
               @click="getProductList(i)"
-            >{{i}}</button>
+            >
+              {{ i }}
+            </button>
             <button @click="getNextList" class="post_btn" id="btn-next">
               <i class="fabtn fa fa-angle-double-right" aria-hidden="true"></i>
             </button>
@@ -83,7 +99,7 @@
             <span
               style="font-size: 1rem; display: block; cursor: pointer"
               class="text-white"
-              v-for="(item,i) in catList"
+              v-for="(item, i) in catList"
               :key="i"
               v-bind:id="item.id"
               @click="getProductsByCategory(item.id)"
@@ -140,7 +156,9 @@
               style="margin-left: auto; margin-right: auto;"
               class="btn btn-lg"
               @click="filterbyprice"
-            >Filter Products</button>
+            >
+              Filter Products
+            </button>
           </div>
         </div>
       </div>
@@ -149,88 +167,165 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      productList: [],
-      count: '',
-      imageURLs: [],
-      nextLink: '',
-      prevLink: '',
-      catList: [],
-      price: [],
-      price_max: 0,
-      price_min: 0,
-      price_start: 0,
-      price_end: 0,
-      p1: 0,
-      p2: 0,
-      num1: 1,
-      num2: 6,
-      page_num: 0
-    }
-  },
-  updated() {
-    $('#sliderOutput1').val()
-  },
-  mounted() {
-    this.getProductsWithPagination()
-    this.getProductCategories()
-  },
-  methods: {
-    getProductsWithPagination: function() {
-      this.imageURLs = []
-      this.$store.dispatch('getProductsWithPagination').then(res => {
-        this.page_num = Math.ceil(res.data.count / 3)
-
-        res.data.results.map(item => {
-          this.price.push(parseInt(item.price))
-        })
-        this.price_min = Math.min(...this.price)
-        this.price_max = Math.max(...this.price)
-        this.price_end = Math.max(...this.price) + 1000
-
-        setTimeout(function() {
-          $(document).foundation()
-        }, 100)
-        this.productList = res.data.results.reverse()
-        this.count = res.data.count
-        res.data.results.map(item => {
-          this.imageURLs.push(item.images.split(',')[0])
-        })
-        this.nextLink = res.data.next
-        $('#btn-next').removeClass('hide-btn')
-        $('#btn-prev').removeClass('hide-btn')
-        $('.btn_mid').removeClass('hide-btn')
-        $('#btn-prev').attr('disabled', true)
-      })
+  import axios from 'axios'
+  export default {
+    data() {
+      return {
+        productList: [],
+        count: '',
+        imageURLs: [],
+        nextLink: '',
+        prevLink: '',
+        catList: [],
+        price: [],
+        price_max: 0,
+        price_min: 0,
+        price_start: 0,
+        price_end: 0,
+        p1: 0,
+        p2: 0,
+        num1: 1,
+        num2: 6,
+        page_num: 0
+      }
     },
-    getAllProducts: function() {
-      // this.imageURLs = []
-      // this.$store.dispatch('getProductsWithPagination').then(res => {
-      //   this.productList = res.data.results.reverse()
-      //   this.count = res.data.count
-      //   res.data.results.map(item => {
-      //     this.imageURLs.push(item.images.split(',')[0])
-      //   })
-      //   this.nextLink = res.data.next
-      //   $('#btn-next').removeClass('hide-btn')
-      //   $('#btn-prev').removeClass('hide-btn')
-      // })
+    updated() {
+      $('#sliderOutput1').val()
+    },
+    mounted() {
       this.getProductsWithPagination()
-      $('#btn-next').attr('disabled', false)
+      this.getProductCategories()
     },
-    getProductList: function(i) {
-      this.imageURLs = []
-      if (i == 1) {
+    methods: {
+      getProductsWithPagination: function() {
+        this.imageURLs = []
+        this.$store.dispatch('getProductsWithPagination').then(res => {
+          this.page_num = Math.ceil(res.data.count / 6)
+
+          res.data.results.map(item => {
+            this.price.push(parseInt(item.price))
+          })
+          this.price_min = Math.min(...this.price)
+          this.price_max = Math.max(...this.price)
+          this.price_end = Math.max(...this.price) + 1000
+
+          setTimeout(function() {
+            $(document).foundation()
+          }, 100)
+          this.productList = res.data.results.reverse()
+          this.count = res.data.count
+          res.data.results.map(item => {
+            this.imageURLs.push(item.images.split(',')[0])
+          })
+          this.nextLink = res.data.next
+          $('#btn-next').removeClass('hide-btn')
+          $('#btn-prev').removeClass('hide-btn')
+          $('.btn_mid').removeClass('hide-btn')
+          $('#btn-prev').attr('disabled', true)
+        })
+      },
+      getAllProducts: function() {
+        // this.imageURLs = []
+        // this.$store.dispatch('getProductsWithPagination').then(res => {
+        //   this.productList = res.data.results.reverse()
+        //   this.count = res.data.count
+        //   res.data.results.map(item => {
+        //     this.imageURLs.push(item.images.split(',')[0])
+        //   })
+        //   this.nextLink = res.data.next
+        //   $('#btn-next').removeClass('hide-btn')
+        //   $('#btn-prev').removeClass('hide-btn')
+        // })
+        this.getProductsWithPagination()
+        $('#btn-next').attr('disabled', false)
+      },
+      getProductList: function(i) {
+        this.imageURLs = []
+        if (i == 1) {
+          axios({
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/product_pagination'
+          }).then(res => {
+            this.prevLink = res.data.previous
+            this.nextLink = res.data.next
+            this.productList = res.data.results
+            res.data.results.map(item => {
+              this.imageURLs.push(item.images.split(',')[0])
+            })
+            // if (res.data.previous === null) {
+            //   $('#btn-prev').attr('disabled', true)
+            // }
+            if (i === 1) {
+              $('#btn-next').attr('disabled', false)
+              $('#btn-prev').attr('disabled', true)
+            } else {
+              $('#btn-next').attr('disabled', false)
+              $('#btn-prev').attr('disabled', false)
+            }
+          })
+        } else {
+          axios({
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/product_pagination?offset=' + (i - 1) * 6
+          }).then(res => {
+            this.prevLink = res.data.previous
+            this.nextLink = res.data.next
+            this.productList = res.data.results
+            res.data.results.map(item => {
+              this.imageURLs.push(item.images.split(',')[0])
+            })
+            // if (res.data.next === null) {
+            //   $('#btn-next').attr('disabled', true)
+            // } else {
+            //   $('#btn-next').attr('disabled', false)
+            // }
+            // if (res.data.prev === null) {
+            //   $('#btn-prev').attr('disabled', true)
+            // } else {
+            //   $('#btn-prev').attr('disabled', false)
+            // }
+            if (i === this.page_num) {
+              $('#btn-next').attr('disabled', true)
+              $('#btn-prev').attr('disabled', false)
+            } else {
+              $('#btn-next').attr('disabled', false)
+              $('#btn-prev').attr('disabled', false)
+            }
+          })
+        }
+      },
+      getNextList: function() {
+        this.imageURLs = []
+        $('#btn-prev').attr('disabled', false)
+
         axios({
           method: 'GET',
-          url: 'http://127.0.0.1:8000/product_pagination'
+          url: this.nextLink
         }).then(res => {
           this.prevLink = res.data.previous
           this.nextLink = res.data.next
           this.productList = res.data.results
+          this.count = res.data.results.length
+          res.data.results.map(item => {
+            this.imageURLs.push(item.images.split(',')[0])
+          })
+          if (res.data.next === null) {
+            $('#btn-next').attr('disabled', true)
+          }
+        })
+      },
+
+      getPrevList: function() {
+        this.imageURLs = []
+        $('#btn-next').attr('disabled', false)
+        axios({
+          method: 'GET',
+          url: this.prevLink
+        }).then(res => {
+          this.prevLink = res.data.previous
+          this.nextLink = res.data.next
+          this.productList = res.data.results
+          this.count = res.data.results.length
           res.data.results.map(item => {
             this.imageURLs.push(item.images.split(',')[0])
           })
@@ -238,113 +333,50 @@ export default {
             $('#btn-prev').attr('disabled', true)
           }
         })
-      } else {
-        axios({
-          method: 'GET',
-          url: 'http://127.0.0.1:8000/product_pagination?offset=' + (i - 1) * 3
-        }).then(res => {
-          this.prevLink = res.data.previous
-          this.nextLink = res.data.next
-          this.productList = res.data.results
-          res.data.results.map(item => {
+      },
+
+      getProductCategories: function() {
+        this.$store.dispatch('getProductCategories').then(res => {
+          this.catList = res.data
+        })
+      },
+      getProductsByCategory: function(id) {
+        this.imageURLs = []
+        this.$store.dispatch('getProductsByCategory', id).then(res => {
+          this.productList = res.data
+          this.count = res.data.length
+          res.data.map(item => {
             this.imageURLs.push(item.images.split(',')[0])
           })
-          if (res.data.next === null) {
-            $('#btn-next').attr('disabled', true)
-          } else {
-            $('#btn-next').attr('disabled', false)
-          }
-          if (res.data.prev === null) {
-            $('#btn-prev').attr('disabled', true)
-          } else {
-            $('#btn-prev').attr('disabled', false)
-          }
         })
+        $('#btn-next').addClass('hide-btn')
+        $('#btn-prev').addClass('hide-btn')
+        $('.btn_mid').addClass('hide-btn')
+        $('#btn-next').attr('disabled', false)
+      },
+      filterbyprice: function() {
+        this.p1 = $('#sliderOutput1').val() - 1
+        this.p2 = $('#sliderOutput2').val() + 1
+        this.$store.dispatch('getProductsAll').then(res => {
+          const productObj = []
+          this.productList = []
+          this.imageURLs = []
+          res.data.map(item => {
+            if (item['price'] >= this.p1 && item['price'] <= this.p2) {
+              this.productObj = item
+              this.productList.push(this.productObj)
+              this.count = this.productList.length
+              this.imageURLs.push(item.images.split(',')[0])
+            }
+          })
+        })
+        $('#btn-next').addClass('hide-btn')
+        $('#btn-prev').addClass('hide-btn')
+        $('.btn_mid').addClass('hide-btn')
+        $('#btn-next').attr('disabled', false)
       }
-    },
-    getNextList: function() {
-      this.imageURLs = []
-      $('#btn-prev').attr('disabled', false)
-
-      axios({
-        method: 'GET',
-        url: this.nextLink
-      }).then(res => {
-        this.prevLink = res.data.previous
-        this.nextLink = res.data.next
-        this.productList = res.data.results
-        this.count = res.data.results.length
-        res.data.results.map(item => {
-          this.imageURLs.push(item.images.split(',')[0])
-        })
-        if (res.data.next === null) {
-          $('#btn-next').attr('disabled', true)
-        }
-      })
-    },
-
-    getPrevList: function() {
-      this.imageURLs = []
-      $('#btn-next').attr('disabled', false)
-      axios({
-        method: 'GET',
-        url: this.prevLink
-      }).then(res => {
-        this.prevLink = res.data.previous
-        this.nextLink = res.data.next
-        this.productList = res.data.results
-        this.count = res.data.results.length
-        res.data.results.map(item => {
-          this.imageURLs.push(item.images.split(',')[0])
-        })
-        if (res.data.previous === null) {
-          $('#btn-prev').attr('disabled', true)
-        }
-      })
-    },
-
-    getProductCategories: function() {
-      this.$store.dispatch('getProductCategories').then(res => {
-        this.catList = res.data
-      })
-    },
-    getProductsByCategory: function(id) {
-      this.imageURLs = []
-      this.$store.dispatch('getProductsByCategory', id).then(res => {
-        this.productList = res.data
-        this.count = res.data.length
-        res.data.map(item => {
-          this.imageURLs.push(item.images.split(',')[0])
-        })
-      })
-      $('#btn-next').addClass('hide-btn')
-      $('#btn-prev').addClass('hide-btn')
-      $('.btn_mid').addClass('hide-btn')
-      $('#btn-next').attr('disabled', false)
-    },
-    filterbyprice: function() {
-      this.p1 = $('#sliderOutput1').val() - 1
-      this.p2 = $('#sliderOutput2').val() + 1
-      this.$store.dispatch('getProductsAll').then(res => {
-        const productObj = []
-        this.productList = []
-        this.imageURLs = []
-        res.data.map(item => {
-          if (item['price'] >= this.p1 && item['price'] <= this.p2) {
-            this.productObj = item
-            this.productList.push(this.productObj)
-            this.count = this.productList.length
-            this.imageURLs.push(item.images.split(',')[0])
-          }
-        })
-      })
-      $('#btn-next').addClass('hide-btn')
-      $('#btn-prev').addClass('hide-btn')
-      $('.btn_mid').addClass('hide-btn')
-      $('#btn-next').attr('disabled', false)
     }
   }
-}
 </script>
 
 <style scoped>

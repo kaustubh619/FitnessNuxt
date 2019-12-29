@@ -9,7 +9,7 @@
             </a>
             <h3 class="white-text padding-bottom-10">Welcome</h3>
             <p class="white-text">Please Login to your Dashboard</p>
-            <form class="form-body">
+            <form class="form-body" method="POST">
               <div class="form-group margin-top-25">
                 <input
                   id="username"
@@ -208,7 +208,7 @@
 
 <script>
   import axios from 'axios'
-  import Cookies from 'js-cookie'
+  // import Cookies from 'js-cookie'
   axios.defaults.withCredentials = false
 
   export default {
@@ -292,7 +292,7 @@
             const user = res.data.user
             const username = res.data.username
 
-            Cookies.set('token', token)
+            // Cookies.set('x-access-token', token)
             localStorage.setItem('token', token)
             localStorage.setItem('user_id', user)
             localStorage.setItem('username', username)
@@ -301,27 +301,25 @@
 
             this.cLogin()
             this.$store.commit('authentication', true)
+            this.$router.push('/')
 
-            this.$router.push('/user/dashboard')
+            // this.$cookies.set('access_token', res.data.access, {
+            //   path: '/',
+            //   maxAge: 60 * 60 * 24 * 7
+            // })
 
-            this.$cookies.set('access_token', res.data.access, {
-              path: '/',
-              maxAge: 60 * 60 * 24 * 7
-            })
+            // this.$cookies.set('email', res.data.user_info.email, {
+            //   path: '/',
+            //   maxAge: 60 * 60 * 24 * 7
+            // })
 
-            this.$cookies.set('email', res.data.user_info.email, {
-              path: '/',
-              maxAge: 60 * 60 * 24 * 7
-            })
-
-            this.$cookies.set('user_id', res.data.user_info.id, {
-              path: '/',
-              maxAge: 60 * 60 * 24 * 7
-            })
+            // this.$cookies.set('user_id', res.data.user_info.id, {
+            //   path: '/',
+            //   maxAge: 60 * 60 * 24 * 7
+            // })
           })
           .catch(err => {
-            console.log(err)
-            console.log('error in request1', err.response)
+            console.log('Error in request ' + err)
           })
       },
 
@@ -456,7 +454,7 @@ h3 {
     top: 10%;
     bottom: 0;
     margin: auto;
-    z-index: 51;
+    z-index: 1000;
   }
 
   .login-col {
@@ -490,7 +488,7 @@ h3 {
     bottom: 20%;
     margin: auto;
     max-width: 500px;
-    z-index: 51;
+    z-index: 1000;
   }
 
   .login-col {
@@ -617,7 +615,25 @@ input.material-input:focus + label.material-input {
   content: '';
   height: 100%;
   background-color: #000000cc;
-  z-index: 50;
+  z-index: 1000;
+}
+
+[type='color'],
+[type='date'],
+[type='datetime-local'],
+[type='datetime'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+textarea {
+  width: 100%;
 }
 </style>
 

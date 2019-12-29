@@ -1,5 +1,5 @@
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -103,7 +103,7 @@ export default {
   axios: {},
 
   router: {
-    base: '/fitness/'
+    base: ''
   },
   /*
    ** Build configuration

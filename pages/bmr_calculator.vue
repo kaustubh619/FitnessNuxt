@@ -283,6 +283,7 @@
   import PostList from '~/components/List.vue'
 
   export default {
+    middleware: 'auth',
     data() {
       return {
         cm: '',
@@ -362,7 +363,7 @@
           payload_new.append('user', localStorage.getItem('user_id'))
           const date_added = new Date()
           const day = date_added.getDate()
-          const month = date_added.getMonth()
+          const month = date_added.getMonth() + 1
           const year = date_added.getFullYear()
           const added_dated = year + '-' + month + '-' + day
           payload_new.append('date_time', added_dated)
@@ -475,83 +476,86 @@
         this.$store.dispatch('bmrValues', payload).then(res => {
           this.x_axis = []
           this.y_axis = []
-          res.data.reverse().map(item => {
-            this.y_axis.push(item.bmr_value)
-            this.x_axis.push(item.date_time)
+          res.data
+            .reverse()
+            .splice(0, 6)
+            .map(item => {
+              this.y_axis.push(item.bmr_value)
+              this.x_axis.push(item.date_time)
 
-            var chart = document.getElementById('chart').getContext('2d'),
-              gradient = chart.createLinearGradient(0, 0, 0, 450)
-            gradient.addColorStop(0, 'rgba(57, 182, 255, 0.5)')
-            gradient.addColorStop(0.5, 'rgba(57, 182, 255, 0.25)')
-            gradient.addColorStop(1, 'rgba(57, 182, 255, 0)')
+              var chart = document.getElementById('chart').getContext('2d'),
+                gradient = chart.createLinearGradient(0, 0, 0, 450)
+              gradient.addColorStop(0, 'rgba(57, 182, 255, 0.5)')
+              gradient.addColorStop(0.5, 'rgba(57, 182, 255, 0.25)')
+              gradient.addColorStop(1, 'rgba(57, 182, 255, 0)')
 
-            var data = {
-              labels: this.x_axis,
-              datasets: [
-                {
-                  label: 'BMR',
-                  backgroundColor: gradient,
-                  pointBackgroundColor: 'white',
-                  borderWidth: 1,
-                  borderColor: '#911215',
-                  data: this.y_axis
-                }
-              ]
-            }
-
-            var options = {
-              responsive: true,
-              maintainAspectRatio: true,
-              animation: {
-                easing: 'easeInOutQuad',
-                duration: 520
-              },
-              scales: {
-                xAxes: [
+              var data = {
+                labels: this.x_axis,
+                datasets: [
                   {
-                    gridLines: {
-                      color: 'rgba(30, 173, 203, 0.05)',
-                      lineWidth: 1
-                    }
-                  }
-                ],
-                yAxes: [
-                  {
-                    gridLines: {
-                      color: 'rgba(30, 173, 203, 0.05)',
-                      lineWidth: 1
-                    }
+                    label: 'BMR',
+                    backgroundColor: gradient,
+                    pointBackgroundColor: 'white',
+                    borderWidth: 1,
+                    borderColor: '#911215',
+                    data: this.y_axis
                   }
                 ]
-              },
-              elements: {
-                line: {
-                  tension: 0.4
-                }
-              },
-              legend: {
-                display: false
-              },
-              point: {
-                backgroundColor: 'white'
-              },
-              tooltips: {
-                titleFontFamily: 'Open Sans',
-                backgroundColor: 'rgba(30, 173, 203, 0.3)',
-                titleFontColor: 'red',
-                caretSize: 5,
-                cornerRadius: 2,
-                xPadding: 10,
-                yPadding: 10
               }
-            }
 
-            var chartInstance = new Chart(chart, {
-              type: 'line',
-              data: data,
-              options: options
+              var options = {
+                responsive: true,
+                maintainAspectRatio: true,
+                animation: {
+                  easing: 'easeInOutQuad',
+                  duration: 520
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      gridLines: {
+                        color: 'rgba(30, 173, 203, 0.05)',
+                        lineWidth: 1
+                      }
+                    }
+                  ],
+                  yAxes: [
+                    {
+                      gridLines: {
+                        color: 'rgba(30, 173, 203, 0.05)',
+                        lineWidth: 1
+                      }
+                    }
+                  ]
+                },
+                elements: {
+                  line: {
+                    tension: 0.4
+                  }
+                },
+                legend: {
+                  display: false
+                },
+                point: {
+                  backgroundColor: 'white'
+                },
+                tooltips: {
+                  titleFontFamily: 'Open Sans',
+                  backgroundColor: 'rgba(30, 173, 203, 0.3)',
+                  titleFontColor: 'red',
+                  caretSize: 5,
+                  cornerRadius: 2,
+                  xPadding: 10,
+                  yPadding: 10
+                }
+              }
+
+              var chartInstance = new Chart(chart, {
+                type: 'line',
+                data: data,
+                options: options
+              })
             })
-          })
         })
       }
     }

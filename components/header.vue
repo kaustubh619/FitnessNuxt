@@ -25,9 +25,6 @@
           <nuxt-link class="link" to="/shop">SHOP</nuxt-link>
           <nuxt-link class="link" to="/blog/post">BLOG</nuxt-link>
           <nuxt-link class="link" to="/contact-us">CONTACT US</nuxt-link>
-          <nuxt-link v-if="authentication" class="link" to="/user/dashboard"
-            >BMR Calculator</nuxt-link
-          >
           <a
             style="cursor:pointer"
             class="link"
@@ -227,6 +224,7 @@
 
 <script>
   import { mapState } from 'vuex'
+  import Cookies from 'js-cookie'
 
   export default {
     computed: {
@@ -308,6 +306,7 @@
       },
       logOutUser: function() {
         localStorage.clear()
+        Cookies.remove('x-access-token')
         this.$store.commit('authentication', false)
         // this.$router.push('/fitness')
       }

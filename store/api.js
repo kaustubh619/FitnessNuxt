@@ -3,59 +3,59 @@ console.log(process.env.NODE_ENV)
 var url
 
 if (process.env.NODE_ENV == 'development') {
-  var url = 'http://127.0.0.1:8000/api/'
+  var url = 'http://127.0.0.1:8000'
 } else {
   var url = '/api/'
 }
 
 export const state = () => ({
-  login: url + 'login/customer',
+  login: url + '/api/login/customer',
 
-  signup: url + 'register',
+  signup: url + '/api/register',
 
-  user_ext: 'http://127.0.0.1:8000/user_ext_post',
+  user_ext: url + '/user_ext_post',
 
-  getImages: 'http://127.0.0.1:8000/carousel_image',
+  getImages: url + '/carousel_image',
 
-  getBlogCategoryList: 'http://127.0.0.1:8000/blog_categories',
+  getBlogCategoryList: url + '/blog_categories',
 
-  getAllBlog: 'http://127.0.0.1:8000/blog_post',
+  getAllBlog: url + '/blog_post',
 
-  getAllBlogWP: 'http://127.0.0.1:8000/blog',
+  getAllBlogWP: url + '/blog',
 
-  getBlogsByCategory: 'http://127.0.0.1:8000/blogbycategory/',
+  getBlogsByCategory: url + '/blogbycategory/',
 
-  getBlogComment: 'http://127.0.0.1:8000/blogcomment/',
+  getBlogComment: url + '/blogcomment/',
 
-  getBlogPost: 'http://127.0.0.1:8000/blogbyid/',
+  getBlogPost: url + '/blogbyid/',
 
-  postComment: 'http://127.0.0.1:8000/comment/',
+  postComment: url + '/comment/',
 
-  likePost: 'http://127.0.0.1:8000/blog_like/',
+  likePost: url + '/blog_like/',
 
-  postInquiry: 'http://127.0.0.1:8000/contact',
+  postInquiry: url + '/contact',
 
-  getGalleryImages: 'http://127.0.0.1:8000/gallery',
+  getGalleryImages: url + '/gallery',
 
-  getAllProducts: 'http://127.0.0.1:8000/',
+  getAllProducts: url,
 
-  getProductsWithPagination: 'http://127.0.0.1:8000/product_pagination',
+  getProductsWithPagination: url + '/product_pagination',
 
-  getProductCategories: 'http://127.0.0.1:8000/product/category',
+  getProductCategories: url + '/product/category',
 
-  getProductsWithCategory: 'http://127.0.0.1:8000/productbycategory/',
+  getProductsWithCategory: url + '/productbycategory/',
 
-  getProductsAll: 'http://127.0.0.1:8000',
+  getProductsAll: url,
 
-  getPlans: 'http://127.0.0.1:8000/subscription_plan',
+  getPlans: url + '/subscription_plan',
 
-  getUserDetails: 'http://127.0.0.1:8000/user_ext/',
+  getUserDetails: url + '/user_ext/',
 
-  calculateBMR: 'http://127.0.0.1:8000/bmr_calculator/',
+  calculateBMR: url + '/bmr_calculator/',
 
-  bmrValues: 'http://127.0.0.1:8000/bmr_values/',
+  bmrValues: url + '/bmr_values/',
 
-  PostBMR: 'http://127.0.0.1:8000/post_bmr'
+  PostBMR: url + '/post_bmr'
 })
 
 export const getters = {}
