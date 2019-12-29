@@ -13,7 +13,9 @@
         <button class="btn-bmr" @click="getBMRCalculator">
           Calculate Your BMR
         </button>
-        <button to="" class="btn-trainer">Find A Trainer</button>
+        <nuxt-link to="/find_trainer" class="btn-trainer"
+          >Find A Trainer</nuxt-link
+        >
       </div>
       <div class="carousel-inner" role="listbox">
         <div
@@ -419,7 +421,7 @@ h5 {
   position: absolute;
   top: 46%;
   left: 50%;
-  z-index: 100;
+  z-index: 8;
   transform: translate(-50%, -46%);
   background-color: #f1be03;
   padding: 14px 24px;
@@ -432,12 +434,13 @@ h5 {
   position: absolute;
   top: 54%;
   left: 50%;
-  z-index: 100;
+  z-index: 8;
   transform: translate(-50%, -54%);
   background-color: #f1be03;
-  padding: 14px 24px;
+  padding: 10px 24px;
   font-size: 20px;
   border-radius: 30px;
+  text-decoration: none;
 }
 
 @media (max-width: 37.5em) {
@@ -448,7 +451,7 @@ h5 {
   }
 
   .btn-trainer {
-    padding: 10px 14px;
+    padding: 9px 14px;
     font-size: 16px;
     border-radius: 30px;
   }

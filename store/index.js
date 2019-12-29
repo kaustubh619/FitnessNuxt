@@ -473,5 +473,27 @@ export const actions = {
           console.log('error in request', err)
         })
     })
+  },
+
+  postTrainerInquiry({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.postTrainerInquiry,
+        contentType: 'application/json'
+        // headers: {
+        //     'Authorization': "Token c1caab4f8caea62d5ea07edf0d355af314351223"
+        // }
+      })
+        .then(res => {
+          // console.log(res)
+          // commit('getSingleAuction', res.data);
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('error in request', err)
+        })
+    })
   }
 }

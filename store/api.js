@@ -55,7 +55,9 @@ export const state = () => ({
 
   bmrValues: url + '/bmr_values/',
 
-  PostBMR: url + '/post_bmr'
+  PostBMR: url + '/post_bmr',
+
+  postTrainerInquiry: url + '/find_trainer'
 })
 
 export const getters = {}
