@@ -319,7 +319,7 @@
             // })
           })
           .catch(err => {
-            console.log('Error in request ' + err)
+            alert("Invalid user credentials")
           })
       },
 

@@ -244,7 +244,7 @@
         if (i == 1) {
           axios({
             method: 'GET',
-            url: 'http://127.0.0.1:8000/product_pagination'
+            url: 'http://15.206.195.168/backend/product_pagination'
           }).then(res => {
             this.prevLink = res.data.previous
             this.nextLink = res.data.next
@@ -266,7 +266,7 @@
         } else {
           axios({
             method: 'GET',
-            url: 'http://127.0.0.1:8000/product_pagination?offset=' + (i - 1) * 6
+            url: 'http://15.206.195.168/backend/product_pagination?offset=' + (i - 1) * 6
           }).then(res => {
             this.prevLink = res.data.previous
             this.nextLink = res.data.next
