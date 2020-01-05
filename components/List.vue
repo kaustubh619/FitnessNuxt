@@ -39,7 +39,4 @@
 </script>
 
 <style>
-ul li {
-  list-style-type: square;
-}
 </style>
