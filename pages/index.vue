@@ -203,7 +203,7 @@
     },
 
     async asyncData() {
-      const { data } = await axios.get('http://localhost:8000/carousel_image')
+      const { data } = await axios.get('http://15.206.195.168/backend/carousel_image')
       return { imgs: data }
     },
 
