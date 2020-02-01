@@ -1,8 +1,8 @@
 {
-  "name": "transformersfitnessacademy",
+  "name": "MyTrueStrength",
   "version": "1.0.0",
-  "description": "My stunning Nuxt.js project",
-  "author": "Chiranjib Paul",
+  "description": "Nuxt.js Web Application",
+  "author": "Tecmeadows",
   "private": true,
   "scripts": {
     "dev": "nuxt",

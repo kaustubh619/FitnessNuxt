@@ -18,7 +18,12 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href:
+          'https://www.transformersfitness.in/wp-content/uploads/2019/02/cropped-logo.png'
+      },
       {
         rel: 'stylesheet',
         href:
