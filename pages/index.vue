@@ -200,7 +200,9 @@
     },
 
     async asyncData() {
-      const { data } = await axios.get('http://www.mytruestrength.com/backend/carousel_image')
+      const { data } = await axios.get(
+        'http://mytruestrength.com/backend/carousel_image'
+      )
       return { imgs: data }
     },
 
