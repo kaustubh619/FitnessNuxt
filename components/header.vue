@@ -12,7 +12,7 @@
             alt="Lightweight UI components for Vue.js based on Bulma"
           />
           <p style="color: #f1be03; font-style: normal" class="hideXS">
-            Transformers Fitness Academy
+            MyTrueStrength
           </p>
         </nuxt-link>
         <a @click="showMenu" class="hidelg">
@@ -26,8 +26,8 @@
           <nuxt-link class="link" to="/blog/post">BLOG</nuxt-link>
           <nuxt-link class="link" to="/contact-us">CONTACT US</nuxt-link>
           <nuxt-link class="link" to="/cart" v-if="authentication"
-            >CART</nuxt-link
-          >
+            >CART
+          </nuxt-link>
           <a
             style="cursor:pointer"
             class="link"
@@ -52,7 +52,9 @@
           <nuxt-link class="link" to="/shop">SHOP</nuxt-link>
           <nuxt-link class="link" to="/blog/post">BLOG</nuxt-link>
           <nuxt-link class="link" to="/contact-us">CONTACT US</nuxt-link>
-          <nuxt-link class="link" to="/cart">Cart</nuxt-link>
+          <nuxt-link class="link" to="/cart" v-if="authentication"
+            >CART
+          </nuxt-link>
           <a
             style="cursor:pointer"
             class="link"
@@ -96,7 +98,7 @@
 }
 
 .nav-header.fixed {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -312,7 +314,7 @@
         localStorage.clear()
         Cookies.remove('x-access-token')
         this.$store.commit('authentication', false)
-        // this.$router.push('/fitness')
+        this.$router.push('/')
       }
     }
   }

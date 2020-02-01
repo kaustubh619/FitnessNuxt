@@ -18,38 +18,8 @@
           <h2 class="text-theme mb-3" style="font-weight:700">
             Find A Trainer Near You
           </h2>
-          <!-- <h6 style="color:grey" class="mb-4">
-            We're here to help. Let us know if you have any questions at all.
-          </h6> -->
         </div>
       </div>
-      <!-- <hr class="hrstyle" /> -->
-      <!-- <div class="row mt-4">
-        <div class="col-12 col-sm-6 mb-2" style="color: grey">
-          <h5 class="mb-3">Location</h5>
-          <h6>Nilgiri Mansion, Block B, Near Primus,</h6>
-          <h6>GS Road, SATSANG VIHAR,</h6>
-          <h6>Bhangagarh, Guwahati, Assam</h6>
-          <h6>781005</h6>
-        </div>
-        <div class="col-12 col-sm-6 mb-2" style="color: grey">
-          <h5 class="mb-3">Hours</h5>
-          <h6>Mon-Thurs: 5:30am-8:30pm</h6>
-          <h6>Fri: 5:30am-7:30pm</h6>
-          <h6>Sat: 8am-12pm</h6>
-          <h6>Sun: 9am-12pm</h6>
-        </div>
-      </div> -->
-      <!-- <hr class="hrstyle" /> -->
-      <!-- <iframe
-        class="mt-5 mb-5"
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14323.91088847191!2d91.769745!3d26.164855!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x72480cc5bfc95dd0!2sTransformers%20Fitness%20Academy!5e0!3m2!1sen!2sin!4v1575052625770!5m2!1sen!2sin"
-        width="100%"
-        height="360"
-        frameborder="0"
-        style="border:0;"
-        allowfullscreen
-      ></iframe> -->
       <h5 class="text-theme">Trainer Inquiry</h5>
       <form class="form-body">
         <div class="row">

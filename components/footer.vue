@@ -1,90 +1,5 @@
 <template>
   <div>
-    <!-- <div class="bg-black mt-5" style="background-image:url('~static/images/footerbg.png');">
-      <div class="container" style="padding:100px 0;">
-        <div class="row">
-          <div class="col-lg-3">
-            <div>
-              <div class="d-flex">
-                <span>
-                  <img style="height:75px;width:75px" src="~static/images/Untitled-1.png" />
-                </span>
-                <span>
-                  <p style="color:#f1be03">Transformers Fitness Academy</p>
-                </span>
-              </div>
-              <div>
-                <p style="font-size: 10px; line-height:20px">
-                  Transformers Fitness Academy is the premier personal training
-                  academy in India with a wide range of courses designed to equip trainers with the
-                  latest scientific tools to become world-class training professionals.
-                  With numerous tie-ups with leading Universities of India and abroad,
-                  Transformers Fitness Academy has emerged as the best personal and fitness
-                  training academy in Guwahati (Assam). Catering to students from across the
-                  seven North-Eastern states and beyond, Transformers Fitness Academy students
-                  are now working in leading gyms and fitness centres in many metro cities of
-                  India, Asia and Europe.
-                </p>
-              </div>
-            </div>
-            <div class>
-              <span>
-                <img style="width:35px;height:35px" src="~static/icons/facebook.png" />
-              </span>
-              <span>
-                <img style="width:35px;height:35px" src="~static/icons/facebook.png" />
-              </span>
-              <span>
-                <img style="width:35px;height:35px" src="~static/icons/facebook.png" />
-              </span>
-            </div>
-          </div>
-          <div class="col-lg-2 offset-2">
-            <div>
-              <h1 class="text">Useful Links</h1>
-              <p class="text-small">Blog</p>
-              <p class="text-small">About Us</p>
-              <p class="text-small">Shipping and Returns</p>
-              <p class="text-small">Sitemap</p>
-              <p class="text-small">Contact Us</p>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div>
-              <h1 class="text">Contact Us</h1>
-              <div class="text-small text-white">
-                Nilgiri Mansion, Block B, Near Primus, GS Rd, SATSANG VIHAR, Bhangagarh, Guwahati, Assam 781005
-                crossfit@gofit.com
-                Open Hours: Closes 9:30PM
-                Phone: 097060 81525
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div>
-              <h1 class="text-white">Brands</h1>
-              <p class="text-small">Beverly International.</p>
-              <p class="text-small">Blackstone Labs.</p>
-              <p class="text-small">Kaged Muscle.</p>
-              <p class="text-small">Cellucor.</p>
-              <p class="text-small">Merica Labz.</p>
-              <p class="text-small">RedCon1.</p>
-              <p class="text-small">Dymatize.</p>
-              <p class="text-small">HPN.</p>
-              <p class="text-small">iSatori.</p>
-              <p class="text-small">Universal Nutrition.</p>
-              <p class="text-small">BSN.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex">
-        <div class="container">
-          <p>© 2019 Transformers Fitness Academy. All Rights Reserved. Terms of Use and Privacy Policy - designed by TecMeadows</p>
-        </div>
-      </div>
-    </div> -->
-
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -92,40 +7,54 @@
             <div class="footer_column footer_contact">
               <div class="logo_container">
                 <div class="logo">
-                  <nuxt-link to="/"><img src="~static/images/Untitled-1.png" class="logoImg"></nuxt-link>
-                  <span class="logoText">TRANSFORMERS FITNESS ACADEMY</span>
+                  <nuxt-link to="/"
+                    ><img src="~static/images/Untitled-1.png" class="logoImg"
+                  /></nuxt-link>
+                  <span class="logoText">MyTrueStrength</span>
                 </div>
               </div>
               <div class="footer_title">
                 <p style="font-size: 0.9rem; line-height:20px">
-                  Transformers Fitness Academy is the premier personal training
-                  academy in India with a wide range of courses designed to equip trainers with the
-                  latest scientific tools to become world-class training professionals.
-                  With numerous tie-ups with leading Universities of India and abroad,
-                  Transformers Fitness Academy has emerged as the best personal and fitness
-                  training academy in Guwahati (Assam). Catering to students from across the
-                  seven North-Eastern states and beyond, Transformers Fitness Academy students
-                  are now working in leading gyms and fitness centres in many metro cities of
-                  India, Asia and Europe.
+                  MyTrueStrength is the premier personal training academy in
+                  India with a wide range of courses designed to equip trainers
+                  with the latest scientific tools to become world-class
+                  training professionals. With numerous tie-ups with leading
+                  Universities of India and abroad, MyTrueStrength has emerged
+                  as the best personal and fitness training academy in Guwahati
+                  (Assam). Catering to students from across the seven
+                  North-Eastern states and beyond, Transformers Fitness Academy
+                  students are now working in leading gyms and fitness centres
+                  in many metro cities of India, Asia and Europe.
                 </p>
               </div>
-              <div class>
+              <!-- <div class>
                 <span>
-                  <img style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px" src="~static/icons/facebook.png" />
+                  <img
+                    style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px"
+                    src="~static/icons/facebook.png"
+                  />
                 </span>
                 <span>
-                  <img style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px" src="~static/icons/facebook.png" />
+                  <img
+                    style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px"
+                    src="~static/icons/facebook.png"
+                  />
                 </span>
                 <span>
-                  <img style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px" src="~static/icons/facebook.png" />
+                  <img
+                    style="width: 35px; height: 35px; margin-top: 10px; margin-right: 10px"
+                    src="~static/icons/facebook.png"
+                  />
                 </span>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <div class="col-lg-2 mt-5">
             <div class="footer_column">
-              <div class="footer_title" style="color: #f1be03">Get to Know Us</div>
+              <div class="footer_title" style="color: #f1be03">
+                Get to Know Us
+              </div>
               <ul class="footer_list">
                 <li>
                   <nuxt-link to="/about-us">About Us</nuxt-link>
@@ -142,7 +71,7 @@
                 <li>
                   <nuxt-link to="">Shipping & Returns</nuxt-link>
                 </li>
-              
+
                 <li>
                   <nuxt-link to="">Sitemap</nuxt-link>
                 </li>
@@ -156,16 +85,25 @@
               <ul class="footer_list">
                 <li style="font-size: 0.9rem;">
                   <p class="mb-2">
-                    <i class="fa fa-map-marker" style="color: #f1be03; margin-left: -16px"></i>
-                    Nilgiri Mansion, Block B, Near Primus, GS Rd, SATSANG VIHAR, Bhangagarh, Guwahati, 
-                    Assam 781005
+                    <i
+                      class="fa fa-map-marker"
+                      style="color: #f1be03; margin-left: -16px"
+                    ></i>
+                    Nilgiri Mansion, Block B, Near Primus, GS Rd, SATSANG VIHAR,
+                    Bhangagarh, Guwahati, Assam 781005
                   </p>
                   <p class="mb-2">
-                    <i class="fa fa fa-paper-plane" style="color: #f1be03; margin-left: -21px"></i>
-                    crossfit@gofit.com Open Hours: Closes 9:30PM 
+                    <i
+                      class="fa fa fa-paper-plane"
+                      style="color: #f1be03; margin-left: -21px"
+                    ></i>
+                    crossfit@gofit.com Open Hours: Closes 9:30PM
                   </p>
                   <p>
-                    <i class="fa fa-phone" style="color: #f1be03; margin-left: -17px"></i>
+                    <i
+                      class="fa fa-phone"
+                      style="color: #f1be03; margin-left: -17px"
+                    ></i>
                     Phone: 097060 81525
                   </p>
                 </li>
@@ -208,7 +146,10 @@
             >
               <div class="copyright_content">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <p>© 2019 Transformers Fitness Academy. All Rights Reserved. Terms of Use and Privacy Policy - designed by TecMeadows</p>
+                <p>
+                  © 2019 MyTrueStrength. All Rights Reserved. Terms of Use and
+                  Privacy Policy - designed by TecMeadows
+                </p>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               </div>
               <div class="logos ml-sm-auto">
@@ -280,7 +221,12 @@ p {
 .footer {
   padding-top: 52px;
   padding-bottom: 40px;
-  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.901), rgba(128, 128, 128, 0.901)), url(~static/images/foot_back.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.901),
+      rgba(128, 128, 128, 0.901)
+    ),
+    url(~static/images/foot_back.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -404,7 +350,7 @@ p {
 
 .logoText {
   color: #f1be03;
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
 
 @media (min-width: 37.5em) and (max-width: 75em) {
@@ -415,12 +361,10 @@ p {
 
 @media (max-width: 37.5em) {
   .logoImg {
-  width: 70px;
-}
+    width: 70px;
+  }
   .logoText {
     font-size: 0.8rem;
   }
 }
-
-
 </style>

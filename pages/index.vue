@@ -6,13 +6,26 @@
       data-ride="carousel"
       style="position:relative"
     >
-      <div class="container">
+      <div class="container" style="display: flex">
         <button class="btn-bmr" @click="getBMRCalculator">
-          Calculate Your BMR
+          <span class="hideOnHover">CALCULATE YOUR BMR</span>
+          <img src="~static/images/heartbeat@3x.png" class="img-cst" />
         </button>
-        <nuxt-link to="/find_trainer" class="btn-trainer"
-          >Find A Trainer</nuxt-link
-        >
+        <button class="btn-trainer" @click="getTrainerForm">
+          <span class="hideOnHover1">FIND A TRAINER</span>
+          <img src="~static/images/trainer-icon.png" class="img-cst1" />
+        </button>
+        <button class="btn-shop" @click="goToShop">
+          <span class="hideOnHover2">GO TO SHOP</span>
+          <img src="~static/images/shop.png" class="img-cst2" />
+        </button>
+        <button class="btn-plans">
+          <span class="hideOnHover3">SUBSCRIPTION PLANS</span>
+          <img src="~static/images/plans.png" class="img-cst3" />
+        </button>
+        <!-- <nuxt-link to="/find_trainer" class="btn-trainer"
+          >Find A Trainer
+        </nuxt-link> -->
       </div>
       <div class="carousel-inner" role="listbox">
         <div
@@ -123,7 +136,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-5 container">
+    <div class="mt-5 container" id="sub-plans">
       <div style="margin-bottom: 40px;">
         <p class="fontp left-margin-lg" style="text-align: center;">
           PERSONAL
@@ -166,7 +179,7 @@
 
 <script>
   import axios from 'axios'
-  import calc from '@/components/calc.vue'
+  // import calc from '@/components/calc.vue'
   import Login from '@/components/Login.vue'
   import PostList from '~/components/List.vue'
 
@@ -180,7 +193,7 @@
     },
 
     components: {
-      calc,
+      // calc,
       Login,
       PostList
     },
@@ -197,6 +210,14 @@
     mounted() {
       this.getImages()
       this.getPlans()
+      $('.btn-plans').click(function() {
+        $('html,body').animate(
+          {
+            scrollTop: $('#sub-plans').offset().top
+          },
+          'slow'
+        )
+      })
     },
 
     async asyncData() {
@@ -233,6 +254,12 @@
         } else {
           this.$store.commit('showLogin', true)
         }
+      },
+      getTrainerForm: function() {
+        this.$router.push('/find_trainer')
+      },
+      goToShop: function() {
+        this.$router.push('/all_products')
       }
     }
   }
@@ -418,52 +445,162 @@ h5 {
 .btn-bmr {
   color: white;
   position: absolute;
-  top: 46%;
-  left: 50%;
+  top: 56%;
+  left: 25%;
+  width: 15%;
   z-index: 8;
   transform: translate(-50%, -46%);
-  background-color: #f1be03;
+  background-color: transparent;
   padding: 14px 24px;
-  font-size: 20px;
-  border-radius: 30px;
+  font-size: 17px;
+  border-bottom: 3px solid #ffce10;
+  transition: all 0.3s;
 }
 
 .btn-trainer {
   color: white;
   position: absolute;
-  top: 54%;
-  left: 50%;
+  top: 56%;
+  left: 42%;
+  width: 15%;
   z-index: 8;
-  transform: translate(-50%, -54%);
-  background-color: #f1be03;
-  padding: 10px 24px;
-  font-size: 20px;
-  border-radius: 30px;
+  transform: translate(-50%, -46%);
+  background-color: transparent;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-bottom: 3px solid #ffce10;
   text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-shop {
+  color: white;
+  position: absolute;
+  top: 56%;
+  left: 59%;
+  width: 15%;
+  z-index: 8;
+  transform: translate(-50%, -46%);
+  background-color: transparent;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-bottom: 3px solid #ffce10;
+  transition: all 0.3s;
+}
+
+.btn-plans {
+  color: white;
+  position: absolute;
+  top: 56%;
+  left: 76%;
+  width: 15%;
+  z-index: 8;
+  transform: translate(-50%, -46%);
+  background-color: transparent;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-bottom: 3px solid #ffce10;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1510px) {
+  .btn-bmr {
+    top: 40%;
+    left: 50%;
+    width: 240px;
+    transform: translateX(-50%);
+  }
+  .btn-trainer {
+    top: 47%;
+    left: 50%;
+    width: 240px;
+    transform: translateX(-50%);
+  }
+  .btn-shop {
+    top: 54%;
+    left: 50%;
+    width: 240px;
+    transform: translateX(-50%);
+  }
+  .btn-plans {
+    top: 61%;
+    left: 50%;
+    width: 240px;
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 37.5em) {
   .btn-bmr {
-    padding: 10px 14px;
-    font-size: 16px;
-    border-radius: 30px;
+    font-size: 15px;
+    padding: 8px 24px;
   }
-
   .btn-trainer {
-    padding: 9px 14px;
-    font-size: 16px;
-    border-radius: 30px;
+    font-size: 15px;
+    padding: 8px 24px;
+  }
+  .btn-shop {
+    font-size: 15px;
+    padding: 8px 24px;
+  }
+  .btn-plans {
+    font-size: 15px;
+    padding: 8px 24px;
   }
 }
 
 .btn-bmr:hover,
+.btn-trainer:hover,
+.btn-shop:hover,
+.btn-plans:hover {
+  border: 3px solid #ffce10;
+}
+
+.img-cst,
+.img-cst1,
+.img-cst2,
+.img-cst3 {
+  width: 0px;
+  transition: all 0.5s;
+}
+
+.btn-bmr:hover > .img-cst {
+  width: 26px;
+}
+
+.btn-bmr:hover {
+  font-size: 0px;
+}
+
+.btn-trainer:hover > .img-cst1 {
+  width: 24px;
+}
+
 .btn-trainer:hover {
-  background-color: white;
-  color: black;
+  font-size: 0px;
+}
+
+.btn-shop:hover > .img-cst2 {
+  width: 20px;
+}
+
+.btn-shop:hover {
+  font-size: 0px;
+}
+
+.btn-plans:hover > .img-cst3 {
+  width: 26px;
+}
+
+.btn-plans:hover {
+  font-size: 0px;
 }
 
 .btn-bmr:focus,
-.btn-trainer:focus {
+.btn-trainer:focus,
+.btn-shop:focus,
+.btn-plans:focus {
   outline: none;
 }
 </style>
+

@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'MyTrueStrength',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -46,7 +46,7 @@ export default {
     ],
     script: [
       {
-        src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js',
+        src: 'https://code.jquery.com/jquery-3.1.0.js',
         type: 'text/javascript'
       },
       {
