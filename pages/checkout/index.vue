@@ -241,216 +241,218 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  middleware: 'auth',
-  data() {
-    return {
-      total_price: '',
-      total_items: '',
-      total_discount: '',
-      cart_items: [],
-      cart_keys: [],
-      name: '',
-      contact: '',
-      pincode: '',
-      locality: '',
-      address: '',
-      city_district_town: '',
-      state: '',
-      landmark: '',
-      any_amount: 0
-    }
-  },
-
-  mounted() {
-    this.getOrderSession()
-    this.getCartItems()
-  },
-
-  methods: {
-    getOrderSession: function() {
-      const page_url = window.location.href
-      const session_key = page_url.split('?')[1]
-      this.$store.dispatch('getOrderSession', session_key).then(res => {
-        this.any_amount = Math.round(res.data.amount)
-        JSON.parse(res.data.cart_keys).map(items => {
-          this.cart_keys.push(items.cart_key)
-        })
-      })
-    },
-
-    getCartItems: function() {
-      this.total_price = 0
-      this.mrp = 0
-      this.total_discount = 0
-      this.$store
-        .dispatch('getCartItems', localStorage.getItem('user_id'))
-        .then(res => {
-          this.cart_items = res.data
-          this.total_items = res.data.length
-          res.data.map(items => {
-            setTimeout(function() {
-              $('#' + items.id).val(items.quantity)
-            }, 300)
-
-            this.total_price =
-              parseInt(this.total_price) + parseInt(items.total_price)
-            this.mrp =
-              parseInt(this.mrp) +
-              parseInt(items.quantity) * parseInt(items.product_info.price)
-          })
-          this.total_discount = this.mrp - this.total_price
-        })
-    },
-
-    // quant_increment: function(id, product_id, single_item_price) {
-    //   const initial_value = parseInt($('#' + id).val())
-    //   const final_value = initial_value + 1
-    //   $($('#' + id).val(final_value))
-
-    //   const cst_id = localStorage.getItem('user_id')
-    //   const payload = new FormData()
-    //   payload.append('id', id)
-    //   payload.append('customer_id', cst_id)
-    //   payload.append('product_info', product_id)
-    //   payload.append('quantity', $('#' + id).val())
-    //   payload.append('total_price', $('#' + id).val() * single_item_price)
-    //   payload.append('single_item_price', single_item_price)
-
-    //   this.$store.dispatch('addToCart', payload).then(res => {
-    //     this.getCartItems()
-    //   })
-    // },
-
-    // quant_decrement: function(id, product_id, single_item_price) {
-    //   const initial_value = parseInt($('#' + id).val())
-    //   if (initial_value > 1) {
-    //     const final_value = initial_value - 1
-    //     $($('#' + id).val(final_value))
-
-    //     const cst_id = localStorage.getItem('user_id')
-    //     const payload = new FormData()
-    //     payload.append('id', id)
-    //     payload.append('customer_id', cst_id)
-    //     payload.append('product_info', product_id)
-    //     payload.append('quantity', $('#' + id).val())
-    //     payload.append('total_price', $('#' + id).val() * single_item_price)
-    //     payload.append('single_item_price', single_item_price)
-
-    //     this.$store.dispatch('addToCart', payload).then(res => {
-    //       this.getCartItems()
-    //     })
-    //   }
-    // },
-
-    payRazorPay: function() {
-      if (this.pincode == '') {
-        alert('Please add pincode')
-      } else if (this.address == '') {
-        alert('Please add address')
-      } else if (this.city_district_town == '') {
-        alert('Please add city/distirict/town')
-      } else {
-        const page_url = window.location.href
-        const session_key = page_url.split('?')[1]
-        const order_payload = new FormData()
-        order_payload.append('session_key', session_key)
-        order_payload.append('user_id', localStorage.getItem('user_id'))
-        order_payload.append('payment_mode', 0)
-        order_payload.append(
-          'delivery_address',
-          this.address +
-            ', ' +
-            this.landmark +
-            ', ' +
-            this.locality +
-            ', ' +
-            this.city_district_town +
-            '-' +
-            this.pincode +
-            ', ' +
-            this.state
-        )
-        order_payload.append('actual_amount', this.any_amount * 100)
-        order_payload.append('cart_keys', this.cart_keys)
-        this.$store.dispatch('createProductOrder', order_payload).then(res => {
-          var options = {
-            key: 'rzp_test_9iatHS2w5hnv4n',
-            // amount: this.total_price,
-            currency: 'INR',
-            name: 'MyTrueStrength',
-
-            description: '',
-            image:
-              'https://www.transformersfitness.in/wp-content/uploads/2019/02/cropped-logo.png',
-            order_id: res.data.order_id,
-            handler: function(response) {
-              const payload = new FormData()
-              payload.append('id', res.data.order_id)
-              payload.append(
-                'razorpay_payment_id',
-                response.razorpay_payment_id
-              )
-              payload.append('razorpay_signature', response.razorpay_signature)
-              payload.append('payment_status', 1)
-              axios({
-                method: 'PUT',
-                data: payload,
-                url: 'http://www.mytruestrength.com/backend/edit_order/' + payload.get('id'),
-                contentType: 'application/json',
-                headers: {
-                  Authorization: 'Token ' + localStorage.getItem('token')
-                }
-              })
-              axios({
-                method: 'DELETE',
-                url:
-                  'http://www.mytruestrength.com/backend/delete_cart_items/' +
-                  localStorage.getItem('user_id'),
-                contentType: 'application/json',
-                headers: {
-                  Authorization: 'Token ' + localStorage.getItem('token')
-                }
-              })
-              alert('Transaction Successful')
-            },
-            prefill: {
-              name: this.name,
-              email: '',
-              contact: this.contact
-            },
-            notes: {
-              address: ''
-            },
-            theme: {
-              color: '#f1bd03'
-            }
-            // callback_url: 'http://localhost:5000/all_products',
-            // redirect: true
-          }
-          var rzp1 = new Razorpay(options)
-          rzp1.open()
-        })
+  import axios from 'axios'
+  export default {
+    middleware: 'auth',
+    data() {
+      return {
+        total_price: '',
+        total_items: '',
+        total_discount: '',
+        cart_items: [],
+        cart_keys: [],
+        name: '',
+        contact: '',
+        pincode: '',
+        locality: '',
+        address: '',
+        city_district_town: '',
+        state: '',
+        landmark: '',
+        any_amount: 0
       }
     },
 
-    editCart: function() {
-      this.$router.push('/cart')
-    }
+    mounted() {
+      this.getOrderSession()
+      this.getCartItems()
+    },
 
-    // removeItem: function(id) {
-    //   var x = confirm(
-    //     'Are you sure you want to remove this item from your cart?'
-    //   )
-    //   if (x)
-    //     return this.$store.dispatch('removeCartItem', id).then(res => {
-    //       this.getCartItems()
-    //     })
-    //   else return false
-    // }
+    methods: {
+      getOrderSession: function() {
+        const page_url = window.location.href
+        const session_key = page_url.split('?')[1]
+        this.$store.dispatch('getOrderSession', session_key).then(res => {
+          this.any_amount = Math.round(res.data.amount)
+          JSON.parse(res.data.cart_keys).map(items => {
+            this.cart_keys.push(items.cart_key)
+          })
+        })
+      },
+
+      getCartItems: function() {
+        this.total_price = 0
+        this.mrp = 0
+        this.total_discount = 0
+        this.$store
+          .dispatch('getCartItems', localStorage.getItem('user_id'))
+          .then(res => {
+            this.cart_items = res.data
+            this.total_items = res.data.length
+            res.data.map(items => {
+              setTimeout(function() {
+                $('#' + items.id).val(items.quantity)
+              }, 300)
+
+              this.total_price =
+                parseInt(this.total_price) + parseInt(items.total_price)
+              this.mrp =
+                parseInt(this.mrp) +
+                parseInt(items.quantity) * parseInt(items.product_info.price)
+            })
+            this.total_discount = this.mrp - this.total_price
+          })
+      },
+
+      // quant_increment: function(id, product_id, single_item_price) {
+      //   const initial_value = parseInt($('#' + id).val())
+      //   const final_value = initial_value + 1
+      //   $($('#' + id).val(final_value))
+
+      //   const cst_id = localStorage.getItem('user_id')
+      //   const payload = new FormData()
+      //   payload.append('id', id)
+      //   payload.append('customer_id', cst_id)
+      //   payload.append('product_info', product_id)
+      //   payload.append('quantity', $('#' + id).val())
+      //   payload.append('total_price', $('#' + id).val() * single_item_price)
+      //   payload.append('single_item_price', single_item_price)
+
+      //   this.$store.dispatch('addToCart', payload).then(res => {
+      //     this.getCartItems()
+      //   })
+      // },
+
+      // quant_decrement: function(id, product_id, single_item_price) {
+      //   const initial_value = parseInt($('#' + id).val())
+      //   if (initial_value > 1) {
+      //     const final_value = initial_value - 1
+      //     $($('#' + id).val(final_value))
+
+      //     const cst_id = localStorage.getItem('user_id')
+      //     const payload = new FormData()
+      //     payload.append('id', id)
+      //     payload.append('customer_id', cst_id)
+      //     payload.append('product_info', product_id)
+      //     payload.append('quantity', $('#' + id).val())
+      //     payload.append('total_price', $('#' + id).val() * single_item_price)
+      //     payload.append('single_item_price', single_item_price)
+
+      //     this.$store.dispatch('addToCart', payload).then(res => {
+      //       this.getCartItems()
+      //     })
+      //   }
+      // },
+
+      payRazorPay: function() {
+        if (this.pincode == '') {
+          alert('Please add pincode')
+        } else if (this.address == '') {
+          alert('Please add address')
+        } else if (this.city_district_town == '') {
+          alert('Please add city/distirict/town')
+        } else {
+          const page_url = window.location.href
+          const session_key = page_url.split('?')[1]
+          const order_payload = new FormData()
+          order_payload.append('session_key', session_key)
+          order_payload.append('user_id', localStorage.getItem('user_id'))
+          order_payload.append('payment_mode', 0)
+          order_payload.append(
+            'delivery_address',
+            this.address +
+              ', ' +
+              this.landmark +
+              ', ' +
+              this.locality +
+              ', ' +
+              this.city_district_town +
+              '-' +
+              this.pincode +
+              ', ' +
+              this.state
+          )
+          order_payload.append('actual_amount', this.any_amount * 100)
+          order_payload.append('cart_keys', this.cart_keys)
+          this.$store.dispatch('createProductOrder', order_payload).then(res => {
+            var options = {
+              key: 'rzp_test_9iatHS2w5hnv4n',
+              // amount: this.total_price,
+              currency: 'INR',
+              name: 'MyTrueStrength',
+
+              description: '',
+              image:
+                'https://www.transformersfitness.in/wp-content/uploads/2019/02/cropped-logo.png',
+              order_id: res.data.order_id,
+              handler: function(response) {
+                const payload = new FormData()
+                payload.append('id', res.data.order_id)
+                payload.append(
+                  'razorpay_payment_id',
+                  response.razorpay_payment_id
+                )
+                payload.append('razorpay_signature', response.razorpay_signature)
+                payload.append('payment_status', 1)
+                axios({
+                  method: 'PUT',
+                  data: payload,
+                  url:
+                    'http://mytruestrength.com/backend/edit_order/' +
+                    payload.get('id'),
+                  contentType: 'application/json',
+                  headers: {
+                    Authorization: 'Token ' + localStorage.getItem('token')
+                  }
+                })
+                axios({
+                  method: 'DELETE',
+                  url:
+                    'http://mytruestrength.com/backend/delete_cart_items/' +
+                    localStorage.getItem('user_id'),
+                  contentType: 'application/json',
+                  headers: {
+                    Authorization: 'Token ' + localStorage.getItem('token')
+                  }
+                })
+                alert('Transaction Successful')
+              },
+              prefill: {
+                name: this.name,
+                email: '',
+                contact: this.contact
+              },
+              notes: {
+                address: ''
+              },
+              theme: {
+                color: '#f1bd03'
+              }
+              // callback_url: 'http://localhost:5000/all_products',
+              // redirect: true
+            }
+            var rzp1 = new Razorpay(options)
+            rzp1.open()
+          })
+        }
+      },
+
+      editCart: function() {
+        this.$router.push('/cart')
+      }
+
+      // removeItem: function(id) {
+      //   var x = confirm(
+      //     'Are you sure you want to remove this item from your cart?'
+      //   )
+      //   if (x)
+      //     return this.$store.dispatch('removeCartItem', id).then(res => {
+      //       this.getCartItems()
+      //     })
+      //   else return false
+      // }
+    }
   }
-}
 </script>
 
 <style scoped>
