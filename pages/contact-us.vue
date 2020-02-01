@@ -182,7 +182,6 @@
         payload.append('phone', this.phone)
         payload.append('enquiry', this.inquiry)
         this.$store.dispatch('postInquiry', payload).then(res => {
-          console.log(res.data)
           alert(
             'Dear ' + this.firstname + ', we will attend to your inquiry shortly!'
           )

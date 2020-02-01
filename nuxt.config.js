@@ -72,6 +72,10 @@ export default {
         src:
           'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js',
         type: 'text/javascript'
+      },
+      {
+        src: 'https://checkout.razorpay.com/v1/checkout.js',
+        type: 'text/javascript'
       }
     ]
   },

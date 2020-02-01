@@ -1,30 +1,27 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <nuxt />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
-import Header from '@/components/header.vue'
-import Footer from '@/components/footer.vue'
-export default {
-  components:{
-    Header,Footer
+  import Header from '@/components/header.vue'
+  import Footer from '@/components/footer.vue'
+  export default {
+    components: {
+      Header,
+      Footer
+    }
   }
-}
 </script>
 <style>
-
-
-
 hr {
   height: 1px;
   border: none;
   color: #000;
   background-color: #000;
 }
-
 
 /* #__layout{
   overflow: hidden;
@@ -39,23 +36,23 @@ hr {
 }
 
 @font-face {
-  font-family: "Light";
-  src: url("~static/Bender/Jovanny Lemonad - Bender.otf");
+  font-family: 'Light';
+  src: url('~static/Bender/Jovanny Lemonad - Bender.otf');
 
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Bold";
-  src: url("~static/Bender/Jovanny Lemonad - Bender-Bold.otf");
+  font-family: 'Bold';
+  src: url('~static/Bender/Jovanny Lemonad - Bender-Bold.otf');
 
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: "Italics";
-  src: url("~static/Bender/Jovanny Lemonad - Bender-Italic.otf");
+  font-family: 'Italics';
+  src: url('~static/Bender/Jovanny Lemonad - Bender-Italic.otf');
 
   font-weight: normal;
   font-style: normal;
@@ -72,12 +69,12 @@ button,
 input,
 select,
 textarea {
-  font-family: "Light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif !important;
+  font-family: 'Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif !important;
 }
 html {
-  font-family: "Light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -91,15 +88,15 @@ html,
 body {
   overflow-x: hidden;
   min-width: 360px;
-  background-color:#242424;
+  background-color: #242424;
 }
 
 .h-100 {
   height: 100%;
 }
 
-p{
-  margin-bottom: initial
+p {
+  margin-bottom: initial;
 }
 
 .w-100 {
@@ -131,7 +128,7 @@ p{
   left: 0;
   bottom: -15px;
   margin: auto;
-  content: "";
+  content: '';
   background: #11998e; /* fallback for old browsers */
   background: linear-gradient(to right, #008494, #11998e);
 }
@@ -145,7 +142,7 @@ p{
   bottom: -15px;
   margin: auto;
   z-index: -1;
-  content: "";
+  content: '';
   background: #11998e;
   background: linear-gradient(to right, #008494, #11998e);
 }
@@ -207,13 +204,12 @@ p{
   justify-content: space-between;
 }
 
-
 .align-items-center {
   align-items: center;
 }
 
-.btn{
-  border-radius: 0
+.btn {
+  border-radius: 0;
 }
 
 ul {
@@ -289,11 +285,11 @@ ul {
 label {
   font-size: 12px;
   font-weight: bold;
-  color: white 
+  color: white;
 }
 
-input[type="text"],
-input[type="email"] {
+input[type='text'],
+input[type='email'] {
   outline: 0;
   border: 0;
   padding: 10px;
@@ -301,34 +297,44 @@ input[type="email"] {
 }
 
 /* appearance for checked radiobutton */
-input[type="radio"]:checked {
-      background: #FFC107;
-    /* color: red; */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: inline-block;
-    background-clip: content-box;
-    border: 2px solid #FFEB3B;
-    /* background-color: #e7e6e7; */
-    border-radius: 50%;
-        margin-right: 5px;
+input[type='radio']:checked {
+  background: #ffc107;
+  /* color: red; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  background-clip: content-box;
+  border: 2px solid #ffeb3b;
+  /* background-color: #e7e6e7; */
+  border-radius: 50%;
+  margin-right: 5px;
 }
 /* appearance for checked radiobutton */
-input[type="radio"] {
-      background: #1e1e1e;
-    /* color: red; */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    padding: 1px;
-    background-clip: content-box;
-    border: 2px solid #FFEB3B;
-    /* background-color: #e7e6e7; */
-    border-radius: 50%;
-        margin-right: 5px;
+input[type='radio'] {
+  background: #1e1e1e;
+  /* color: red; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  padding: 1px;
+  background-clip: content-box;
+  border: 2px solid #ffeb3b;
+  /* background-color: #e7e6e7; */
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+img {
+  max-width: none!important;
 }
 </style>

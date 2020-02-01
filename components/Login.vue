@@ -3,7 +3,7 @@
     <div class="login container">
       <div class="login-row">
         <div class="login-col">
-          <div v-if="isLogin" class="login-texts flex flex-column">
+          <div v-if="!isLogin" class="login-texts flex flex-column">
             <a @click="cLogin" style="cursor: pointer; margin-left: auto;">
               <img src="~static/close.svg" style="width: 20px" />
             </a>
@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <div v-if="!isLogin" class="login-texts flex flex-column">
+          <div v-if="isLogin" class="login-texts flex flex-column">
             <a @click="cLogin" style="cursor: pointer; margin-left: auto">
               <img src="~static/close.svg" style="width: 20px" />
             </a>
@@ -319,7 +319,7 @@
             // })
           })
           .catch(err => {
-            alert("Invalid user credentials")
+            alert('Invalid user credentials')
           })
       },
 

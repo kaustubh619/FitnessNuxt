@@ -4,8 +4,6 @@ axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded'
 
 export const state = () => {
-  //global var
-  // showLogin: false,
   return {
     showLogin: false,
     authentication: false,
@@ -14,13 +12,7 @@ export const state = () => {
 }
 
 export const mutations = {
-  // set_user(state) {
-  //     state.authenticated = true
-  //     console.log(state.authenticated)
-
-  // },
   showLogin(state, isLoggedIn) {
-    // console.log('selecting exercise mutation, ' + isLoggedIn)
     state.showLogin = isLoggedIn
   },
   authentication(state, userSignedIn) {
@@ -53,13 +45,8 @@ export const actions = {
         data: payload,
         url: state.api.signup,
         contentType: 'application/json'
-        // headers: {
-        //     'Authorization': "Token c1caab4f8caea62d5ea07edf0d355af314351223"
-        // }
       })
         .then(res => {
-          // console.log(res)
-          // commit('getSingleAuction', res.data);
           resolve(res)
         })
         .catch(err => {
@@ -67,6 +54,7 @@ export const actions = {
         })
     })
   },
+
   user_ext_post({ commit, state }, payload) {
     return new Promise((resolve, reject) => {
       axios({
@@ -92,9 +80,6 @@ export const actions = {
         contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
-          // commit('getAllProducts', res.data);
           resolve(res)
         })
         .catch(err => {
@@ -156,14 +141,9 @@ export const actions = {
       axios({
         method: 'GET',
         url: state.api.getBlogsByCategory + payload,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
           resolve(res)
         })
         .catch(err => {
@@ -177,14 +157,9 @@ export const actions = {
       axios({
         method: 'GET',
         url: state.api.getBlogComment + payload,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
           resolve(res)
         })
         .catch(err => {
@@ -198,14 +173,9 @@ export const actions = {
       axios({
         method: 'GET',
         url: state.api.getBlogPost + payload,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
           resolve(res)
         })
         .catch(err => {
@@ -220,14 +190,12 @@ export const actions = {
         method: 'POST',
         data: payload,
         url: state.api.postComment,
-        contentType: 'application/json'
-        // headers: {
-        //     'Authorization': "Token c1caab4f8caea62d5ea07edf0d355af314351223"
-        // }
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
       })
         .then(res => {
-          // console.log(res)
-          // commit('getSingleAuction', res.data);
           resolve(res)
         })
         .catch(err => {
@@ -242,7 +210,10 @@ export const actions = {
         method: 'PUT',
         data: payload.likes,
         url: state.api.likePost + payload.slug,
-        contentType: 'application/json'
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
       })
         .then(res => {
           resolve(res)
@@ -252,6 +223,7 @@ export const actions = {
         })
     })
   },
+
   postInquiry({ commit, state }, payload) {
     return new Promise((resolve, reject) => {
       axios({
@@ -259,13 +231,8 @@ export const actions = {
         data: payload,
         url: state.api.postInquiry,
         contentType: 'application/json'
-        // headers: {
-        //     'Authorization': "Token c1caab4f8caea62d5ea07edf0d355af314351223"
-        // }
       })
         .then(res => {
-          // console.log(res)
-          // commit('getSingleAuction', res.data);
           resolve(res)
         })
         .catch(err => {
@@ -273,19 +240,15 @@ export const actions = {
         })
     })
   },
+
   getGalleryImages({ commit, state }, payload) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'GET',
         url: state.api.getGalleryImages,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
           resolve(res)
         })
         .catch(err => {
@@ -293,6 +256,7 @@ export const actions = {
         })
     })
   },
+
   getAllProducts({ commit, state }, payload) {
     return new Promise((resolve, reject) => {
       axios({
@@ -301,9 +265,6 @@ export const actions = {
         contentType: 'application/json'
       })
         .then(res => {
-          // console.log(res.data)
-          // console.log('response')
-          // commit('getAllProducts', res.data);
           resolve(res)
         })
         .catch(err => {
@@ -349,10 +310,7 @@ export const actions = {
       axios({
         method: 'GET',
         url: state.api.getProductsWithCategory + payload,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
           resolve(res)
@@ -362,6 +320,7 @@ export const actions = {
         })
     })
   },
+
   getProductsAll({ commit, state }, payload) {
     return new Promise((resolve, reject) => {
       axios({
@@ -383,10 +342,7 @@ export const actions = {
       axios({
         method: 'GET',
         url: state.api.getPlans,
-        contentType: 'application/json',
-        headers: {
-          Authorization: 'Token ' + localStorage.getItem('token')
-        }
+        contentType: 'application/json'
       })
         .then(res => {
           resolve(res)
@@ -463,7 +419,7 @@ export const actions = {
         url: state.api.PostBMR,
         contentType: 'application/json',
         headers: {
-          Authorization: 'Token c1caab4f8caea62d5ea07edf0d355af314351223'
+          Authorization: 'Token ' + localStorage.getItem('token')
         }
       })
         .then(res => {
@@ -482,17 +438,184 @@ export const actions = {
         data: payload,
         url: state.api.postTrainerInquiry,
         contentType: 'application/json'
-        // headers: {
-        //     'Authorization': "Token c1caab4f8caea62d5ea07edf0d355af314351223"
-        // }
       })
         .then(res => {
-          // console.log(res)
-          // commit('getSingleAuction', res.data);
           resolve(res)
         })
         .catch(err => {
           console.log('error in request', err)
+        })
+    })
+  },
+
+  getProductById({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getProductById + payload,
+        contentType: 'application/json'
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  addToCart({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.addToCart,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('error in request', err)
+        })
+    })
+  },
+
+  getCartItems({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getCartItems + payload,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  removeCartItem({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'DELETE',
+        url: state.api.removeCartItem + payload,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('error in request', err)
+        })
+    })
+  },
+
+  createOrderSession({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.createOrderSession,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('error in request', err)
+        })
+    })
+  },
+
+  getOrderSession({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getOrderSession + payload,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  createProductOrder({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.createProductOrder,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('error in request', err)
+        })
+    })
+  },
+
+  editOrders({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'PUT',
+        data: payload,
+        url: state.api.editOrders + payload.get('id'),
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  getUserCoupon({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getUserCoupon + payload,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
         })
     })
   }

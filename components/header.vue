@@ -25,6 +25,9 @@
           <nuxt-link class="link" to="/shop">SHOP</nuxt-link>
           <nuxt-link class="link" to="/blog/post">BLOG</nuxt-link>
           <nuxt-link class="link" to="/contact-us">CONTACT US</nuxt-link>
+          <nuxt-link class="link" to="/cart" v-if="authentication"
+            >CART</nuxt-link
+          >
           <a
             style="cursor:pointer"
             class="link"
@@ -49,6 +52,7 @@
           <nuxt-link class="link" to="/shop">SHOP</nuxt-link>
           <nuxt-link class="link" to="/blog/post">BLOG</nuxt-link>
           <nuxt-link class="link" to="/contact-us">CONTACT US</nuxt-link>
+          <nuxt-link class="link" to="/cart">Cart</nuxt-link>
           <a
             style="cursor:pointer"
             class="link"

@@ -54,7 +54,6 @@ export default {
   methods: {
     getGalleryImages: function() {
       this.$store.dispatch('getGalleryImages').then(res => {
-        // console.log(res.data)
         const imageObj = {}
 
         res.data.map(item => {

@@ -57,7 +57,25 @@ export const state = () => ({
 
   PostBMR: url + '/post_bmr',
 
-  postTrainerInquiry: url + '/find_trainer'
+  postTrainerInquiry: url + '/find_trainer',
+
+  getProductById: url + '/prodbyid/',
+
+  addToCart: url + '/create_cart',
+
+  getCartItems: url + '/cartbyuser/',
+
+  removeCartItem: url + '/cart_item_delete/',
+
+  createOrderSession: url + '/create_order_session',
+
+  getOrderSession: url + '/get_order_session/',
+
+  createProductOrder: url + '/create_order',
+
+  editOrders: url + '/edit_order/',
+
+  getUserCoupon: url + '/get_coupon/'
 })
 
 export const getters = {}

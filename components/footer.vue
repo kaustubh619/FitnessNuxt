@@ -215,22 +215,22 @@
                 <ul class="logos_list">
                   <li>
                     <a href="#">
-                      <img src="images/logos_1.png" alt />
+                      <!-- <img src="images/logos_1.png" alt /> -->
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="images/logos_2.png" alt />
+                      <!-- <img src="images/logos_2.png" alt /> -->
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="images/logos_3.png" alt />
+                      <!-- <img src="images/logos_3.png" alt /> -->
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="images/logos_4.png" alt />
+                      <!-- <img src="images/logos_4.png" alt /> -->
                     </a>
                   </li>
                 </ul>

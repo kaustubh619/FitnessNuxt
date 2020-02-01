@@ -55,9 +55,16 @@
                     <p class="font m-0">₹{{ x.price }}</p>
                   </div>
                   <div class="buybtn m-2">
-                    <button type="button" class="btn btn-lg w-100">
-                      ADD TO CART +
-                    </button>
+                    <nuxt-link
+                      :to="{
+                        name: 'product_description-id',
+                        params: { id: x.slug, product_id: x.id }
+                      }"
+                      type="button"
+                      class="btn btn-lg w-100"
+                    >
+                      View Product
+                    </nuxt-link>
                   </div>
                 </div>
               </div>
@@ -224,27 +231,18 @@
           $('#btn-prev').attr('disabled', true)
         })
       },
+
       getAllProducts: function() {
-        // this.imageURLs = []
-        // this.$store.dispatch('getProductsWithPagination').then(res => {
-        //   this.productList = res.data.results.reverse()
-        //   this.count = res.data.count
-        //   res.data.results.map(item => {
-        //     this.imageURLs.push(item.images.split(',')[0])
-        //   })
-        //   this.nextLink = res.data.next
-        //   $('#btn-next').removeClass('hide-btn')
-        //   $('#btn-prev').removeClass('hide-btn')
-        // })
         this.getProductsWithPagination()
         $('#btn-next').attr('disabled', false)
       },
+
       getProductList: function(i) {
         this.imageURLs = []
         if (i == 1) {
           axios({
             method: 'GET',
-            url: 'http://15.206.195.168/backend/product_pagination'
+            url: 'http://127.0.0.1:8000/product_pagination'
           }).then(res => {
             this.prevLink = res.data.previous
             this.nextLink = res.data.next
@@ -252,9 +250,6 @@
             res.data.results.map(item => {
               this.imageURLs.push(item.images.split(',')[0])
             })
-            // if (res.data.previous === null) {
-            //   $('#btn-prev').attr('disabled', true)
-            // }
             if (i === 1) {
               $('#btn-next').attr('disabled', false)
               $('#btn-prev').attr('disabled', true)
@@ -266,7 +261,7 @@
         } else {
           axios({
             method: 'GET',
-            url: 'http://15.206.195.168/backend/product_pagination?offset=' + (i - 1) * 6
+            url: 'http://127.0.0.1:8000/product_pagination?offset=' + (i - 1) * 6
           }).then(res => {
             this.prevLink = res.data.previous
             this.nextLink = res.data.next
@@ -274,16 +269,6 @@
             res.data.results.map(item => {
               this.imageURLs.push(item.images.split(',')[0])
             })
-            // if (res.data.next === null) {
-            //   $('#btn-next').attr('disabled', true)
-            // } else {
-            //   $('#btn-next').attr('disabled', false)
-            // }
-            // if (res.data.prev === null) {
-            //   $('#btn-prev').attr('disabled', true)
-            // } else {
-            //   $('#btn-prev').attr('disabled', false)
-            // }
             if (i === this.page_num) {
               $('#btn-next').attr('disabled', true)
               $('#btn-prev').attr('disabled', false)
@@ -294,6 +279,7 @@
           })
         }
       },
+
       getNextList: function() {
         this.imageURLs = []
         $('#btn-prev').attr('disabled', false)
@@ -340,6 +326,7 @@
           this.catList = res.data
         })
       },
+
       getProductsByCategory: function(id) {
         this.imageURLs = []
         this.$store.dispatch('getProductsByCategory', id).then(res => {
@@ -354,6 +341,7 @@
         $('.btn_mid').addClass('hide-btn')
         $('#btn-next').attr('disabled', false)
       },
+
       filterbyprice: function() {
         this.p1 = $('#sliderOutput1').val() - 1
         this.p2 = $('#sliderOutput2').val() + 1

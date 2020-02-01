@@ -17,11 +17,22 @@
           OUR
           <p style="color:#f1be03;display:inline">PHILOSOPHY</p>
         </span>
-        <span>“Eat meat and vegetables, nuts and seeds, some fruit, little starch and no sugar. Keep intake to levels that will support exercise but not body fat.”</span>
-        <p>(CrossFit Journal, September 2002, “The Garage Gym”, “World Class Fitness in 100 Words”)</p>
+        <span
+          >“Eat meat and vegetables, nuts and seeds, some fruit, little starch
+          and no sugar. Keep intake to levels that will support exercise but not
+          body fat.”</span
+        >
+        <p>
+          (CrossFit Journal, September 2002, “The Garage Gym”, “World Class
+          Fitness in 100 Words”)
+        </p>
         <span>
-          I’m sure you’ve all heard that nutrition is the foundation for performance. In fact, nutrition is the base of the pyramid Crossfit founder Greg Glassman created, with met-cons, gymnastics, weight lifting and sport all being supported by it.
-          What we put into our bodies greatly affects how we look, feel, and perform, but most athletes make nutrition secondary in their training.
+          I’m sure you’ve all heard that nutrition is the foundation for
+          performance. In fact, nutrition is the base of the pyramid Crossfit
+          founder Greg Glassman created, with met-cons, gymnastics, weight
+          lifting and sport all being supported by it. What we put into our
+          bodies greatly affects how we look, feel, and perform, but most
+          athletes make nutrition secondary in their training.
         </span>
       </div>
       <div class="row d-flex mt-5">
@@ -32,7 +43,10 @@
             <p style="display: inline; color: #f1be03">FITNESS</p>
           </span>
           <span>
-            <button class="btn" style="width: 180px; height: 50px; font-size: 1.1rem">
+            <button
+              class="btn"
+              style="width: 180px; height: 50px; font-size: 1.1rem"
+            >
               GET STARTED
               <img
                 src="~static/images/long-arrow-pointing-up.png"
@@ -48,32 +62,52 @@
       <div class="row block4">
         <span>FROM OUR STORE</span>
         <span>
-          <p style="color:#f1be03;display:inline">NUTRITION</p>FOR BETTER RESULTS
+          <p style="color:#f1be03;display:inline">NUTRITION</p>
+          FOR BETTER RESULTS
         </span>
         <span>
-          Integer vitae enim vel nisi feugiat ultricies. Phasellus hendrerit pharetra posuere. In hac habitasse platea dictumst.
-          Integer diam nulla, condimentum sit amet pretium id, lobortisvel tellus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-          per inceptos himenaeos. Aliquam id dictum libero, at cursus lorem. Duis sed aliquet augue.
+          Integer vitae enim vel nisi feugiat ultricies. Phasellus hendrerit
+          pharetra posuere. In hac habitasse platea dictumst. Integer diam
+          nulla, condimentum sit amet pretium id, lobortisvel tellus. Class
+          aptent taciti sociosqu ad litora torquent per conubia nostra, per
+          inceptos himenaeos. Aliquam id dictum libero, at cursus lorem. Duis
+          sed aliquet augue.
         </span>
       </div>
       <div class="row mt-5">
-        <div v-for="(x,y) in allProducts" :key="y" class="col-lg-3 col-sm-6 col-12 divheight">
+        <div
+          v-for="(x, y) in allProducts"
+          :key="y"
+          class="col-lg-3 col-sm-6 col-12 divheight"
+        >
           <div>
             <div class="product2">
               <img class="product" :src="imageURLs[y]" />
               <div class="text-center product-name">
                 <p class="font showLG">
-                  <span v-for="(i,j) in 40" :key="j">{{ x.product_name[j] }}</span>
+                  <span v-for="(i, j) in 40" :key="j">{{
+                    x.product_name[j]
+                  }}</span>
                   <span style="font-size: 1.6rem; line-height: 0rem;">...</span>
                 </p>
                 <p class="font showXS">
-                  <span v-for="(i,j) in 30" :key="j">{{ x.product_name[j] }}</span>
+                  <span v-for="(i, j) in 30" :key="j">{{
+                    x.product_name[j]
+                  }}</span>
                   <span style="font-size: 1.6rem; line-height: 0rem;">...</span>
                 </p>
                 <p class="font m-0">₹{{ x.price }}</p>
               </div>
               <div class="buybtn m-2">
-                <button type="button" class="btn btn-lg w-100">ADD TO CART +</button>
+                <nuxt-link
+                  :to="{
+                    name: 'product_description-id',
+                    params: { id: x.slug, product_id: x.id }
+                  }"
+                  type="button"
+                  class="btn btn-lg w-100"
+                  >View Product</nuxt-link
+                >
               </div>
             </div>
           </div>
@@ -96,7 +130,8 @@
           <br />
           <span>
             PROVIDE
-            <p style="display: inline; color: #f1be03">BEST SERVICE</p>FOR YOU
+            <p style="display: inline; color: #f1be03">BEST SERVICE</p>
+            FOR YOU
           </span>
         </div>
 
@@ -104,7 +139,8 @@
           <span>ON ORDERS OVER ₹500</span>
           <br />
           <span>
-            <p style="display: inline; color: #f1be03">FREE</p>SHIPPING
+            <p style="display: inline; color: #f1be03">FREE</p>
+            SHIPPING
           </span>
         </div>
 
@@ -122,45 +158,45 @@
   </div>
 </template>
 <script>
-import Login from '@/components/Login.vue'
-export default {
-  data() {
-    return {
-      allProducts: [],
-      imageURLs: []
-    }
-  },
+  import Login from '@/components/Login.vue'
+  export default {
+    data() {
+      return {
+        allProducts: [],
+        imageURLs: []
+      }
+    },
 
-  components: {
-    Login
-  },
+    components: {
+      Login
+    },
 
-  computed: {
-    showLogin: {
-      get: function() {
-        return this.$store.state.showLogin
-      },
-      set: function(newName) {
-        // this.$store.dispatch('addName',newName);
+    computed: {
+      showLogin: {
+        get: function() {
+          return this.$store.state.showLogin
+        },
+        set: function(newName) {
+          // this.$store.dispatch('addName',newName);
+        }
+      }
+    },
+
+    mounted() {
+      this.getAllProducts()
+    },
+
+    methods: {
+      getAllProducts: function() {
+        this.$store.dispatch('getAllProducts').then(res => {
+          this.allProducts = res.data.reverse().slice(0, 4)
+          res.data.map(item => {
+            this.imageURLs.push(item.images.split(',')[0])
+          })
+        })
       }
     }
-  },
-
-  mounted() {
-    this.getAllProducts()
-  },
-
-  methods: {
-    getAllProducts: function() {
-      this.$store.dispatch('getAllProducts').then(res => {
-        this.allProducts = res.data.reverse().slice(0, 4)
-        res.data.map(item => {
-          this.imageURLs.push(item.images.split(',')[0])
-        })
-      })
-    }
   }
-}
 </script>
 
 <style scoped>
