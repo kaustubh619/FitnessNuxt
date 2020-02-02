@@ -14,7 +14,12 @@
     </div>
     <div class="container mb-5">
       <div class="row">
-        <div class="col-12 col-sm-4 asd" v-for="(x,y) in imageURLs" :key="y" style="padding:0px;">
+        <div
+          class="col-12 col-sm-4 asd"
+          v-for="(x, y) in imageURLs"
+          :key="y"
+          style="padding:0px;"
+        >
           <img :src="x" class="imageRes" v-bind:id="y" @click="getId" />
         </div>
       </div>
@@ -24,78 +29,78 @@
 </template>
 
 <script>
-import Login from '@/components/Login.vue'
-export default {
-  data() {
-    return {
-      firstname: '',
-      lastname: '',
-      email: '',
-      phone: '',
-      inquiry: '',
-      imageURLs: [],
-      imageObj: {}
-    }
-  },
-  components: {
-    Login
-  },
-  computed: {
-    showLogin: {
-      get: function() {
-        return this.$store.state.showLogin
-      },
-      set: function(newName) {}
-    }
-  },
-  mounted() {
-    this.getGalleryImages()
-  },
-  methods: {
-    getGalleryImages: function() {
-      this.$store.dispatch('getGalleryImages').then(res => {
-        const imageObj = {}
+  import Login from '@/components/Login.vue'
+  export default {
+    data() {
+      return {
+        firstname: '',
+        lastname: '',
+        email: '',
+        phone: '',
+        inquiry: '',
+        imageURLs: [],
+        imageObj: {}
+      }
+    },
+    components: {
+      Login
+    },
+    computed: {
+      showLogin: {
+        get: function() {
+          return this.$store.state.showLogin
+        },
+        set: function(newName) {}
+      }
+    },
+    mounted() {
+      this.getGalleryImages()
+    },
+    methods: {
+      getGalleryImages: function() {
+        this.$store.dispatch('getGalleryImages').then(res => {
+          const imageObj = {}
 
-        res.data.map(item => {
-          this.imageURLs = item.gallery_images.split(',')
+          res.data.map(item => {
+            this.imageURLs = item.gallery_images.split(',')
+          })
         })
-      })
-    },
-    getId: function(event) {
-      $(event.target).addClass('imageTransform')
-      $(event.target).css('opacity', 1)
-      $(event.target)
-        .parent()
-        .siblings()
-        .children()
-        .removeClass('imageTransform')
-      $(event.target)
-        .parent()
-        .siblings()
-        .children()
-        .css('opacity', 0.2)
-    },
-    removeCss: function(event) {
-      $(event.target)
-        .children()
-        .children()
-        .children()
-        .children()
-        .removeClass('imageTransform')
-      $(event.target)
-        .children()
-        .children()
-        .children()
-        .children()
-        .css('opacity', 1)
+      },
+      getId: function(event) {
+        $(event.target).addClass('imageTransform')
+        $(event.target).css('opacity', 1)
+        $(event.target)
+          .parent()
+          .siblings()
+          .children()
+          .removeClass('imageTransform')
+        $(event.target)
+          .parent()
+          .siblings()
+          .children()
+          .css('opacity', 0.2)
+      },
+      removeCss: function(event) {
+        $(event.target)
+          .children()
+          .children()
+          .children()
+          .children()
+          .removeClass('imageTransform')
+        $(event.target)
+          .children()
+          .children()
+          .children()
+          .children()
+          .css('opacity', 1)
+      }
     }
   }
-}
 </script>
 
 <style scoped>
 .header-img {
-  height: 50vh;
+  height: 30vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 128, 128, 0.65),
@@ -111,7 +116,7 @@ export default {
   font-size: 3.5rem;
   font-weight: 600;
   color: white;
-  top: 20vh;
+  top: 10vh;
   display: block;
   text-align: center;
 }

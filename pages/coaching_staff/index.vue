@@ -1,84 +1,18 @@
 <template>
   <div>
     <div class="header-img">
-      <span class="header-text">About Us</span>
+      <span class="header-text">Coaching Staff</span>
     </div>
     <div class="container">
       <div class="row breadcrumb" style="background: transparent;">
         <nuxt-link to="/" class="link">Home</nuxt-link>
         <i class="fa fa-circle" aria-hidden="true"></i>
         <ul>
-          <li class="bullet">About Us</li>
+          <li class="bullet">Coaching Staff</li>
         </ul>
       </div>
-      <div class="row block1">
-        <span>WHO WE ARE?</span>
-        <span>
-          START
-          <p style="color:#f1be03;display:inline">YOUR TRAINING</p>
-          TODAY
-        </span>
-        <span>
-          We believe the quality of our health determines the quality of our
-          lives—and nothing is more important than that. We believe fitness is
-          about strengthening and conditioning your body and mind so you can get
-          out there, explore the world, seek new adventures and be the person
-          you were meant to be.
-        </span>
-        <span>
-          Windy City Strength & Conditioning is a dedicated, full time strength
-          and conditioning facility, and the home of Windy City CrossFit—the
-          first CrossFit facility in Chicago. We use kettlebells, barbells,
-          dumbbells, bumper plates, jump boxes, medicine balls, rowers,
-          gymnastics rings, parallettes and pull-up bars to effectively train
-          our athletes every day.
-        </span>
-      </div>
-      <div class="row" style="margin-top: 3rem">
-        <video width="100%" height="100%" poster="images/ma.jpg" controls>
-          <source src="~static/video/fit2.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="row block2">
-        <span>CrossFit in 100 Words</span>
-        <span>
-          Eat meat and vegtables, nuts and seeds, some fruit, little starch and
-          no sugar. Keep intake to levels that will support exercise but not
-          body fat. Practice and train all major lifts: Deadlift, clean, squat,
-          presses, clean and jerks, and snatch. Similarly, master the basics of
-          gymnastics: Pull ups, dips, rope climb, push ups, sit ups, presses to
-          handstands, pirouettes, flips, splits, and holds. Bike, run, swim,
-          row, etc. hard and fast five to six days per week mix these elements
-          in as many combinations and patterns as creativity will allow. Routine
-          is the enemy. Keep workouts short and intense. Regularly learn and
-          play new sports.
-        </span>
-      </div>
-      <div class="row block3">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-          <!-- The slideshow -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="~static/images/crossfit2.jpg" class="w-100 iheight" />
-            </div>
-            <div class="carousel-item">
-              <img src="~static/images/crossfit.jpg" class="w-100 iheight" />
-            </div>
-            <div class="carousel-item">
-              <img src="~static/images/body3.jpg" class="w-100 iheight" />
-            </div>
-          </div>
 
-          <!-- Left and right controls -->
-          <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row block4">
+      <div class="row block-n">
         <span>
           Our
           <p style="color:#f1be03;display:inline">Coaching</p>
@@ -113,7 +47,10 @@
               </div>
               <div class="buybtn m-2">
                 <nuxt-link
-                  :to="{ name: 'coaching_staff-id', params: { id: x.slug } }"
+                  :to="{
+                    name: 'coaching_staff-id',
+                    params: { id: x.slug, trainer_id: x.id }
+                  }"
                   style="text-decoration: none; color: #f1be03; font-size: 1rem;"
                 >
                   <button type="button" class="btn btn-lg w-100">
@@ -130,15 +67,7 @@
         </div>
       </div>
       <div class="row block5">
-        <span style="display: block; margin-bottom: 40px">
-          <nuxt-link to="/coaching_staff">
-            Read More about Our Team
-            <img
-              src="~static/images/long-arrow-pointing-up-yellow.png"
-              style="width: 20px"
-            />
-          </nuxt-link>
-        </span>
+        <span> </span>
         <span>TESTIMONIALS</span>
         <span>WHAT THEY SAY</span>
         <span>"</span>
@@ -188,51 +117,6 @@
           </div>
         </div>
       </div>
-      <div class="row" style="margin-top: 4rem">
-        <div class="col-md-12 heroSlider-fixed">
-          <div class="overlay"></div>
-          <!-- Slider -->
-          <div class="slider responsive">
-            <div>
-              <img src="~static/images/s2.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s1.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s3.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s4.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s1.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s3.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s2.png" class="sliderimg" />
-            </div>
-            <div>
-              <img src="~static/images/s4.png" class="sliderimg" />
-            </div>
-          </div>
-          <!-- control arrows -->
-          <div class="prev">
-            <i
-              class="fa fa-arrow-left"
-              style="font-size: 1.1rem; border: 4px solid #f1be03; border-radius: 50%; padding: 6px 8px"
-            ></i>
-          </div>
-          <div class="next">
-            <i
-              class="fa fa-arrow-right"
-              style="font-size: 1.1rem; border: 4px solid #f1be03; border-radius: 50%; padding: 6px 8px"
-            ></i>
-          </div>
-        </div>
-      </div>
     </div>
     <Login v-if="showLogin" />
   </div>
@@ -261,51 +145,14 @@
 
     mounted() {
       this.getTrainersList()
-
-      $('.responsive').slick({
-        dots: true,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      })
     },
 
     methods: {
       getTrainersList: function() {
         this.$store.dispatch('getTrainersList').then(res => {
-          this.trainers_list = res.data
-            .sort(function(a, b) {
-              return Math.random() - 0.5
-            })
-            .splice(0, 4)
+          this.trainers_list = res.data.sort(function(a, b) {
+            return Math.random() - 0.5
+          })
         })
       }
     }
@@ -422,35 +269,35 @@ video:focus {
   object-position: center;
 }
 
-.block4 {
+.block-n {
   color: white;
-  margin-top: 4.5rem;
+
   display: grid;
 }
 
-.block4 span:first-child {
+.block-n span:first-child {
   font-size: 1.9rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
 }
 
-.block4 span:nth-child(2) {
+.block-n span:nth-child(2) {
   margin-top: 2rem;
 }
 
 .divheight {
-  min-height: 360px;
+  height: 400px;
 }
 
 @media (max-width: 37.5em) {
   .divheight {
-    min-height: 400px;
+    height: 480px;
   }
 }
 
 @media (min-width: 37.5em) and (max-width: 75em) {
   .divheight {
-    min-height: 360px;
+    height: 420px;
   }
 }
 
@@ -505,12 +352,12 @@ video:focus {
 .block5 {
   display: grid;
   text-align: center;
+  margin-bottom: 60px;
 }
 
 .block5 span:first-child a {
   text-decoration: none;
   color: white;
-  font-size: 20px;
 }
 
 .block5 span:first-child a:hover {

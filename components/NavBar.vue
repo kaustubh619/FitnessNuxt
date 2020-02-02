@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="navbar-spacing padding-top-20">
       <nav class="topnav box-shadow padding-left-10 padding-right-10 row">
         <div class="flex align-item col" style="height:100%">
@@ -19,7 +18,10 @@
           </div>
         </div>
 
-        <div class="flex align-item col right" style="height:100%; justify-content:flex-end">
+        <div
+          class="flex align-item col right"
+          style="height:100%; justify-content:flex-end"
+        >
           <!-- <div style="position:relative;margin-right:15px">
           <span class="feather-icon-badge bg-primary text-white h-5 w-5 absolute rounded-full text-xs flex items-center justify-center" style="top: 5px; right: 0px;position:absolute;border-radius:50px;width:20px;height:20px">5</span>
           <nuxt-link to="/dashboard/general/messages">
@@ -28,16 +30,17 @@
           </div>-->
           <div class="flex align-item">
             <div style="padding-right:10px" class="hidden-xs">
-              <p class="font-30">{{currentUserEmail}}</p>
+              <p class="font-30">{{ currentUserEmail }}</p>
             </div>
           </div>
         </div>
       </nav>
     </div>
 
-
-
-    <perfect-scrollbar id="mySidenav" class="sidenav hidden-xs hidden-sm padding-bottom-30">
+    <perfect-scrollbar
+      id="mySidenav"
+      class="sidenav hidden-xs hidden-sm padding-bottom-30"
+    >
       <div class="flex align-item">
         <img src="" class="sideNav__Logo" />
         <div style="cursor:pointer" class="hidden-lg" @click="toggleSidenav">
@@ -89,260 +92,46 @@
           <span>Ongoing</span>
         </nuxt-link>
       </div>
-      <!-- <p>General</p>
-      <div class="navbar__parent">
-        <nuxt-link to="/category">
-          <i data-feather="plus-square"></i>
-          <span>Category Manager</span>
-        </nuxt-link>
-      </div> -->
-
-
-      <!-- <p>Customers</p>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/customers">
-          <i data-feather="users"></i>
-          <span>Customers</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/customer_pending">
-          <i data-feather="users"></i>
-          <span>Pending Customers</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/customer/pickup">
-          <i data-feather="users"></i>
-          <span>Pickup</span>
-          <span class="notification hide" id="pickup_notification">{{pickup_count}}</span>
-        </nuxt-link>
-      </div>
-
-      <p>General</p>
-
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/messages">
-          <i data-feather="message-square"></i>
-          <span>Messages</span>
-          <span class="notification" id="message_notification">{{message_count}}</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/pricing">
-          <i data-feather="voicemail"></i>
-          <span>Pricing</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/finance">
-          <i data-feather="briefcase"></i>
-          <span>Wallet</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/cashondelivery">
-          <i data-feather="truck"></i>
-          <span>Cash on Delivery</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/general/stocks">
-          <i data-feather="book"></i>
-          <span>Stocks</span>
-        </nuxt-link>
-      </div>
-
-      <p>Onforwarding Settings</p>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/onforwarding/charges">
-          <i data-feather="settings"></i>
-          <span>Onforwarding Charges</span>
-        </nuxt-link>
-      </div>
-
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/onforwarding/areas">
-          <i data-feather="settings"></i>
-          <span>Onforwarding Areas</span>
-        </nuxt-link>
-      </div>
-
-      <p>Extra</p>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/extras/codes">
-          <i data-feather="settings"></i>
-          <span>Delivery Status Codes</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/extras/changepassword">
-          <i data-feather="key"></i>
-          <span>Change Password</span>
-        </nuxt-link>
-      </div>
-      <p>Admins</p>
-      <div class="navbar__parent">
-        <nuxt-link to="/dashboard/admins/all">
-          <i data-feather="user"></i>
-          <span>All</span>
-        </nuxt-link>
-      </div>
-      <div class="navbar__parent">
-        <a @click="logout">
-          <i data-feather="log-out"></i>
-          <span>Logout</span>
-        </a>
-      </div> -->
     </perfect-scrollbar>
   </div>
-
-  <!-- <div id="parentx">
-
-    
-    <vs-sidebar parent="body" default-index="1"  color="primary" class="sidebarx" spacer v-model="active">
-
-      <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
-
-        <h4>
-          My Name
-          <vs-button color="primary" icon="more_horiz" type="flat"></vs-button>
-        </h4>
-
-      </div>
-
-      <vs-sidebar-item index="1" icon="question_answer">
-        Dashboard
-      </vs-sidebar-item>
-
-      <vs-sidebar-item index="2" icon="gavel">
-        History
-      </vs-sidebar-item>
-
-      <vs-divider icon="person" position="left">
-        User
-      </vs-divider>
-
-      <vs-sidebar-item index="3" icon="verified_user">
-        Configurations
-      </vs-sidebar-item>
-      <vs-sidebar-item index="4" icon="account_box">
-        Profile
-      </vs-sidebar-item>
-      <vs-sidebar-item index="5" >
-        Card
-      </vs-sidebar-item>
-
-      <div class="footer-sidebar" slot="footer">
-        <vs-button icon="reply" color="danger" type="flat">log out</vs-button>
-        <vs-button icon="settings" color="primary" type="border"></vs-button>
-      </div>
-
-    </vs-sidebar>
-
-
-  <div class="navbar-spacing padding-top-20">
-    <nav class="topnav box-shadow padding-left-10 padding-right-10 row">
-      <div class="flex align-item col" style="height:100%">
-        <div>
-
-          <a  @click="active=!active">
-            <i data-feather="menu"></i>
-          </a>
-        </div>
-        <div>
-          <nuxt-link to="/dashboard/parcels/pending">
-            <i data-feather="package"></i>
-          </nuxt-link>
-        </div>
-        <div>
-          <nuxt-link to="/dashboard/general/customers">
-            <i data-feather="users"></i>
-          </nuxt-link>
-        </div>
-        <div>
-          <nuxt-link to="/dashboard/general/finance">
-            <i data-feather="briefcase"></i>
-          </nuxt-link>
-        </div>
-        <div>
-          <nuxt-link to="/dashboard/general/messages">
-            <i data-feather="message-square"></i>
-          </nuxt-link>
-        </div>
-        <div>
-          <nuxt-link to="/dashboard/admins/all">
-            <i data-feather="user"></i>
-          </nuxt-link>
-        </div>
-      </div>
-      
-      <div class="flex align-item col right" style="height:100%; justify-content:flex-end">
-        <div style="position:relative;margin-right:15px">
-          <span class="feather-icon-badge bg-primary text-white h-5 w-5 absolute rounded-full text-xs flex items-center justify-center" style="top: 5px; right: 0px;position:absolute;border-radius:50px;width:20px;height:20px">5</span>
-          <nuxt-link to="/dashboard/general/messages">
-            <i data-feather="message-square"></i>
-          </nuxt-link>
-        </div>
-        <div class="flex align-item">
-          <div style="padding-right:10px">
-            <p class="font-12">Admin Name</p>
-            <p class="font-10">Email to be added</p>
-          </div>
-          <div>
-            <img src="https://via.placeholder.com/40" style="border-radius: 50px">
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-
-
-
-
-  </div>-->
 </template>
 
 
 <script>
-// import feather from 'feather-icons'
+  // import feather from 'feather-icons'
 
-export default {
-  data: () => ({
-    active: false,
-    currentUserEmail: '',
-    pickup_count: 0,
-    message_count: 0,
-    
-  }),
+  export default {
+    data: () => ({
+      active: false,
+      currentUserEmail: '',
+      pickup_count: 0,
+      message_count: 0
+    }),
 
-  computed: {
-    // active : $store.state.sidenavStatus
-  },
-
-  mounted() {
-    feather.replace({ color: 'white' })
-
-    this.currentUserEmail = localStorage.getItem('currentUserEmail')
-
-  },
-  methods: {
-    toggleSidenav: function() {
-      $('#mySidenav').toggleClass('hidden-xs hidden-sm')
+    computed: {
+      // active : $store.state.sidenavStatus
     },
-    logout: function() {
-      document.cookie.split(';').forEach(function(c) {
-        document.cookie = c
-          .replace(/^ +/, '')
-          .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
-      })
 
-      this.$router.push('/')
+    mounted() {
+      feather.replace({ color: 'white' })
+
+      this.currentUserEmail = localStorage.getItem('currentUserEmail')
+    },
+    methods: {
+      toggleSidenav: function() {
+        $('#mySidenav').toggleClass('hidden-xs hidden-sm')
+      },
+      logout: function() {
+        document.cookie.split(';').forEach(function(c) {
+          document.cookie = c
+            .replace(/^ +/, '')
+            .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
+        })
+
+        this.$router.push('/')
+      }
     }
   }
-}
 </script>
 
 <style scoped>
@@ -466,8 +255,7 @@ p {
   font-weight: bold;
 }
 
-
-svg{
+svg {
   width: 20px;
 }
 </style>

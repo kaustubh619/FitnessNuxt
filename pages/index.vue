@@ -270,6 +270,7 @@
   height: 100vh;
   object-fit: cover;
   object-position: center;
+  opacity: 0.6;
 }
 
 h6 {
@@ -335,10 +336,6 @@ h6 {
 }
 .buybtn {
   margin-top: -29px !important;
-}
-
-.btn:hover {
-  background-color: white;
 }
 
 .fontp {
@@ -505,25 +502,25 @@ h5 {
 
 @media (max-width: 1510px) {
   .btn-bmr {
-    top: 40%;
+    top: 36%;
     left: 50%;
     width: 240px;
     transform: translateX(-50%);
   }
   .btn-trainer {
-    top: 47%;
+    top: 43%;
     left: 50%;
     width: 240px;
     transform: translateX(-50%);
   }
   .btn-shop {
-    top: 54%;
+    top: 50%;
     left: 50%;
     width: 240px;
     transform: translateX(-50%);
   }
   .btn-plans {
-    top: 61%;
+    top: 57%;
     left: 50%;
     width: 240px;
     transform: translateX(-50%);

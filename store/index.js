@@ -618,5 +618,139 @@ export const actions = {
           console.log('Error In HTTP Request - ', err)
         })
     })
+  },
+
+  getTrainersList({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getTrainersList,
+        contentType: 'application/json'
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  getTrainerBySlug({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getTrainerBySlug + payload,
+        contentType: 'application/json'
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  getUser({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.getUser + payload,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log('Error In HTTP Request - ', err)
+        })
+    })
+  },
+
+  getUserRatings({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url:
+          state.api.getUserRatings +
+          payload.get('trainer') +
+          '/' +
+          localStorage.getItem('user_id'),
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+
+  updateRatings({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'PUT',
+        data: payload,
+        url:
+          state.api.user_ratings_update +
+          payload.get('trainer') +
+          '/' +
+          localStorage.getItem('user_id'),
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+
+  postRating({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.postRating,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    })
+  },
+
+  allProductRatings({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'GET',
+        url: state.api.allProductRatings + payload,
+        contentType: 'application/json'
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    })
   }
 }

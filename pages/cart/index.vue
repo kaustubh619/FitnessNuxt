@@ -359,7 +359,7 @@ export default {
 
 <style scoped>
 .header-img {
-  height: 50vh;
+  height: 30vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 128, 128, 0.65),
@@ -375,7 +375,7 @@ export default {
   font-size: 3.5rem;
   font-weight: 600;
   color: white;
-  top: 20vh;
+  top: 10vh;
   display: block;
   text-align: center;
 }

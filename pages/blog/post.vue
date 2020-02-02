@@ -15,22 +15,29 @@
       <div class="nav row">
         <ul>
           <li @click="blogAll" id="0">
-            <button id="allblog" :class="activeCategory === 'allblog' ? 'btc' : 'bta'">All</button>
+            <button
+              id="allblog"
+              :class="activeCategory === 'allblog' ? 'btc' : 'bta'"
+            >
+              All
+            </button>
           </li>
-          <li v-for="(item,i) in catList" :key="i" class="cssToggle">
+          <li v-for="(item, i) in catList" :key="i" class="cssToggle">
             <button
               v-bind:id="item.id"
               style="margin-right:5px;"
               class="bta"
               @click="getBlogsByCategory(item.id)"
-            >{{ item.category_name }}</button>
+            >
+              {{ item.category_name }}
+            </button>
           </li>
         </ul>
       </div>
       <div class="row" v-if="blogList.results">
         <div
           class="col-12 col-sm-6 col-lg-4 col-blog"
-          v-for="(item,i) in blogList.results"
+          v-for="(item, i) in blogList.results"
           :key="i"
           style="padding: 15px!important; color: white; margin-bottom: 20px;"
         >
@@ -42,7 +49,10 @@
           <p style="font-size: 0.8rem">
             Posted
             <span v-for="(i, j) in 10" :key="j">{{ item.posted_on[j] }}</span>
-            <i class="fa fa-comments" style="color: #f1be03; font-size: 0.9rem; margin-right: 5px"></i>
+            <i
+              class="fa fa-comments"
+              style="color: #f1be03; font-size: 0.9rem; margin-right: 5px"
+            ></i>
             {{ item.blog_comments.length }}
             <i
               class="fa fa-heart"
@@ -50,12 +60,14 @@
             ></i>
             {{ item.likes.length }}
           </p>
-          <p style="margin-top: 15px; font-size: 1rem; color: grey; margin-bottom: 15px;">
+          <p
+            style="margin-top: 15px; font-size: 1rem; color: grey; margin-bottom: 15px;"
+          >
             <span v-for="(x, y) in 140" :key="y">{{ item.content[y] }}</span>
             <span style="font-size: 2rem; line-height: 0rem">...</span>
           </p>
           <nuxt-link
-            :to="{ name: 'blog-id', params: { id: item.slug }}"
+            :to="{ name: 'blog-id', params: { id: item.slug } }"
             style="text-decoration: none; color: #f1be03; font-size: 1rem;"
           >
             Read More
@@ -69,7 +81,7 @@
       <div class="row" v-else>
         <div
           class="col-12 col-sm-6 col-lg-4 col-blog"
-          v-for="(item,i) in blogList"
+          v-for="(item, i) in blogList"
           :key="i"
           style="padding: 15px!important; color: white; margin-bottom: 20px;"
         >
@@ -81,7 +93,10 @@
           <p style="font-size: 0.8rem">
             Posted
             <span v-for="(i, j) in 10" :key="j">{{ item.posted_on[j] }}</span>
-            <i class="fa fa-comments" style="color: #f1be03; font-size: 0.9rem; margin-right: 5px"></i>
+            <i
+              class="fa fa-comments"
+              style="color: #f1be03; font-size: 0.9rem; margin-right: 5px"
+            ></i>
             {{ item.blog_comments.length }}
             <i
               class="fa fa-heart"
@@ -89,12 +104,14 @@
             ></i>
             {{ item.likes.length }}
           </p>
-          <p style="margin-top: 15px; font-size: 1rem; color: grey; margin-bottom: 15px;">
+          <p
+            style="margin-top: 15px; font-size: 1rem; color: grey; margin-bottom: 15px;"
+          >
             <span v-for="(x, y) in 140" :key="y">{{ item.content[y] }}</span>
             <span style="font-size: 2rem; line-height: 0rem">...</span>
           </p>
           <nuxt-link
-            :to="{ name: 'blog-id', params: { id: item.slug }}"
+            :to="{ name: 'blog-id', params: { id: item.slug } }"
             style="text-decoration: none; color: #f1be03; font-size: 1rem;"
           >
             Read More
@@ -119,151 +136,151 @@
 </template>
 
 <script>
-import Login from '@/components/Login.vue'
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      catList: [],
-      blogList: [],
-      blogComment: [],
-      nextLink: '',
-      prevLink: '',
-      activeCategory: this.$store.state.category
-    }
-  },
-
-  components: {
-    Login
-  },
-
-  computed: {
-    showLogin: {
-      get: function() {
-        return this.$store.state.showLogin
-      },
-      set: function(newName) {}
-    },
-    category: {
-      get: function() {
-        return this.$store.state.category
+  import Login from '@/components/Login.vue'
+  import axios from 'axios'
+  export default {
+    data() {
+      return {
+        catList: [],
+        blogList: [],
+        blogComment: [],
+        nextLink: '',
+        prevLink: '',
+        activeCategory: this.$store.state.category
       }
-    }
-  },
-
-  mounted() {
-    this.getBlogCategoryList()
-    // this.getAllBlog()
-    // $('#allblog').click()
-    $('#btn-prev').attr('disabled', true)
-    this.catselect()
-  },
-
-  methods: {
-    catselect: function() {
-      this.getBlogsByCategory(this.$store.state.category)
     },
 
-    getBlogCategoryList: function() {
-      this.$store.dispatch('getBlogCategoryList').then(res => {
-        this.catList = res.data
-      })
+    components: {
+      Login
     },
 
-    getAllBlog: function() {
-      this.$store.dispatch('getAllBlog').then(res => {
-        this.blogList = res.data
+    computed: {
+      showLogin: {
+        get: function() {
+          return this.$store.state.showLogin
+        },
+        set: function(newName) {}
+      },
+      category: {
+        get: function() {
+          return this.$store.state.category
+        }
+      }
+    },
 
-        this.nextLink = res.data.next
+    mounted() {
+      this.getBlogCategoryList()
+      // this.getAllBlog()
+      // $('#allblog').click()
+      $('#btn-prev').attr('disabled', true)
+      this.catselect()
+    },
 
-        res.data.results.map(item => {
-          this.$store.dispatch('getBlogComment', item.id).then(res => {
-            this.blogComment = res.data
-          })
+    methods: {
+      catselect: function() {
+        this.getBlogsByCategory(this.$store.state.category)
+      },
+
+      getBlogCategoryList: function() {
+        this.$store.dispatch('getBlogCategoryList').then(res => {
+          this.catList = res.data
         })
-      })
-    },
+      },
 
-    blogAll: function() {
-      this.$store.dispatch('getAllBlog').then(res => {
-        this.blogList = res.data
-      })
-      $('#0')
-        .children()
-        .removeClass('bta')
-        .addClass('btc')
-      $('.cssToggle')
-        .children()
-        .removeClass('btc')
-        .addClass('bta')
-      $('#btn-prev').removeClass('hide-btn')
-      $('#btn-next').removeClass('hide-btn')
-    },
-
-    getBlogsByCategory: function(id) {
-      // var id = $(event.target).attr('id')
-
-      if (id) {
-        $('#btn-prev').addClass('hide-btn')
-        $('#btn-next').addClass('hide-btn')
-
-        this.$store.dispatch('getBlogsByCategory', id).then(res => {
+      getAllBlog: function() {
+        this.$store.dispatch('getAllBlog').then(res => {
           this.blogList = res.data
 
-          $('#' + id)
-            .removeClass('bta')
-            .addClass('btc')
-            .parent()
-            .siblings()
-            .children()
-            .removeClass('btc')
-            .addClass('bta')
+          this.nextLink = res.data.next
+
+          res.data.results.map(item => {
+            this.$store.dispatch('getBlogComment', item.id).then(res => {
+              this.blogComment = res.data
+            })
+          })
         })
-      } else {
-        this.getAllBlog()
-        $('#allblog')
+      },
+
+      blogAll: function() {
+        this.$store.dispatch('getAllBlog').then(res => {
+          this.blogList = res.data
+        })
+        $('#0')
+          .children()
           .removeClass('bta')
           .addClass('btc')
+        $('.cssToggle')
+          .children()
+          .removeClass('btc')
+          .addClass('bta')
+        $('#btn-prev').removeClass('hide-btn')
+        $('#btn-next').removeClass('hide-btn')
+      },
+
+      getBlogsByCategory: function(id) {
+        // var id = $(event.target).attr('id')
+
+        if (id) {
+          $('#btn-prev').addClass('hide-btn')
+          $('#btn-next').addClass('hide-btn')
+
+          this.$store.dispatch('getBlogsByCategory', id).then(res => {
+            this.blogList = res.data
+
+            $('#' + id)
+              .removeClass('bta')
+              .addClass('btc')
+              .parent()
+              .siblings()
+              .children()
+              .removeClass('btc')
+              .addClass('bta')
+          })
+        } else {
+          this.getAllBlog()
+          $('#allblog')
+            .removeClass('bta')
+            .addClass('btc')
+        }
+      },
+
+      getNextList: function() {
+        $('#btn-prev').attr('disabled', false)
+
+        axios({
+          method: 'GET',
+          url: this.nextLink
+        }).then(res => {
+          this.prevLink = res.data.previous
+          this.nextLink = res.data.next
+          this.blogList = res.data
+          if (res.data.next === null) {
+            $('#btn-next').attr('disabled', true)
+          }
+        })
+      },
+
+      getPrevList: function() {
+        $('#btn-next').attr('disabled', false)
+        axios({
+          method: 'GET',
+          url: this.prevLink
+        }).then(res => {
+          this.prevLink = res.data.previous
+          this.nextLink = res.data.next
+          this.blogList = res.data
+          if (res.data.previous === null) {
+            $('#btn-prev').attr('disabled', true)
+          }
+        })
       }
-    },
-
-    getNextList: function() {
-      $('#btn-prev').attr('disabled', false)
-
-      axios({
-        method: 'GET',
-        url: this.nextLink
-      }).then(res => {
-        this.prevLink = res.data.previous
-        this.nextLink = res.data.next
-        this.blogList = res.data
-        if (res.data.next === null) {
-          $('#btn-next').attr('disabled', true)
-        }
-      })
-    },
-
-    getPrevList: function() {
-      $('#btn-next').attr('disabled', false)
-      axios({
-        method: 'GET',
-        url: this.prevLink
-      }).then(res => {
-        this.prevLink = res.data.previous
-        this.nextLink = res.data.next
-        this.blogList = res.data
-        if (res.data.previous === null) {
-          $('#btn-prev').attr('disabled', true)
-        }
-      })
     }
   }
-}
 </script>
 
 <style scoped>
 .header-img {
-  height: 50vh;
+  height: 30vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(128, 128, 128, 0.65),
@@ -279,7 +296,7 @@ export default {
   font-size: 3.5rem;
   font-weight: 600;
   color: white;
-  top: 20vh;
+  top: 10vh;
   display: block;
   text-align: center;
 }

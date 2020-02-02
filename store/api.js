@@ -75,7 +75,21 @@ export const state = () => ({
 
   editOrders: url + '/edit_order/',
 
-  getUserCoupon: url + '/get_coupon/'
+  getUserCoupon: url + '/get_coupon/',
+
+  getTrainersList: url + '/trainer_list',
+
+  getTrainerBySlug: url + '/get_trainer_by_slug/',
+
+  getUser: url + '/user/',
+
+  getUserRatings: url + '/update_ratings/',
+
+  user_ratings_update: url + '/user_update_ratings/',
+
+  postRating: url + '/post_ratings',
+
+  allProductRatings: url + '/all_ratings/'
 })
 
 export const getters = {}
