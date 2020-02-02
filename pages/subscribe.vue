@@ -26,7 +26,9 @@
           <div class="col-12">
             <div class="form-group">
               <!-- <label for="brand">Brand</label> -->
-              <select id="plans" class="form-style"></select>
+              <select id="plans" class="form-style">
+                <option value="0">Select Subscription Plan</option>
+              </select>
               <label class="control-label noselect material-input"></label>
             </div>
 
