@@ -63,6 +63,21 @@
           </div>
           <div>
             <span class="text-white custom-text">{{ trainer_name }}</span>
+            <span>
+              <a :href="fb_link" target="_blank">
+                <img src="~static/images/fb.png" class="link-img" />
+              </a>
+            </span>
+            <span>
+              <a :href="insta_link" target="_blank">
+                <img src="~static/images/instagram.png" class="link-img" />
+              </a>
+            </span>
+            <span>
+              <a :href="linkedin_link" target="_blank">
+                <img src="~static/images/linkedin.png" class="link-img" />
+              </a>
+            </span>
             <!-- <span class="blockSpanXS">
               <i
                 class="fa fa-comments"
@@ -526,7 +541,10 @@
         averageRating: '',
         avgPercent: '',
         totalVotes: '',
-        raitngswithreviews: []
+        raitngswithreviews: [],
+        fb_link: '',
+        insta_link: '',
+        linkedin_link: ''
       }
     },
     components: {
@@ -584,6 +602,10 @@
         this.$store
           .dispatch('getTrainerBySlug', this.$route.params.id)
           .then(res => {
+            console.log(res.data)
+            this.fb_link = res.data.trainer_facebook_link
+            this.insta_link = res.data.trainer_instagram_link
+            this.linkedin_link = res.data.trainer_linkedin_link
             this.allImages = res.data.trainer_gallery.split(',')
             this.trainer_name = res.data.trainer_name
             this.post = JSON.parse(res.data.trainer_bio)
@@ -1033,5 +1055,11 @@ ul li {
 
 .progress {
   background-color: white !important;
+}
+
+.link-img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
 </style>
