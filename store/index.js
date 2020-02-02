@@ -752,5 +752,25 @@ export const actions = {
           console.log(err)
         })
     })
+  },
+
+  postSub({ commit, state }, payload) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'POST',
+        data: payload,
+        url: state.api.postSub,
+        contentType: 'application/json',
+        headers: {
+          Authorization: 'Token ' + localStorage.getItem('token')
+        }
+      })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    })
   }
 }

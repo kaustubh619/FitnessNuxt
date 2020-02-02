@@ -165,6 +165,7 @@
                 type="button"
                 class="btn btn-lg w-100"
                 style="margin-top:20px "
+                @click="subscribe"
               >
                 BUY NOW
               </button>
@@ -260,6 +261,9 @@
       },
       goToShop: function() {
         this.$router.push('/all_products')
+      },
+      subscribe: function() {
+        this.$router.push('/subscribe')
       }
     }
   }

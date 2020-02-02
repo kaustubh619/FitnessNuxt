@@ -89,7 +89,9 @@ export const state = () => ({
 
   postRating: url + '/post_ratings',
 
-  allProductRatings: url + '/all_ratings/'
+  allProductRatings: url + '/all_ratings/',
+
+  postSub: url + '/user_sub'
 })
 
 export const getters = {}

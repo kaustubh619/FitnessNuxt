@@ -179,6 +179,7 @@
                 type="button"
                 class="btn btn-lg w-100"
                 style="margin-top:20px "
+                @click="sub"
               >
                 Subscribe Today
               </button>
@@ -215,6 +216,7 @@
                 type="button"
                 class="btn btn-lg w-100"
                 style="margin-top:20px "
+                @click="sub"
               >
                 Subscribe Today
               </button>
@@ -256,6 +258,7 @@
                 type="button"
                 class="btn btn-lg w-100"
                 style="margin-top:20px "
+                @click="sub"
               >
                 Subscribe Today
               </button>
@@ -557,6 +560,10 @@
               })
             })
         })
+      },
+
+      sub: function() {
+        this.$router.push('/subscribe')
       }
     }
   }
