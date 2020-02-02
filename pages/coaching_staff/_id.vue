@@ -973,7 +973,7 @@ ul li {
 
 @media (max-width: 37.5em) {
   .star-ratings {
-    font-size: 64px;
+    font-size: 60px;
   }
 }
 
