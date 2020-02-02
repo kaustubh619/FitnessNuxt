@@ -70,7 +70,7 @@
             </span>
             <span>
               <a :href="insta_link" target="_blank">
-                <img src="~static/images/instagram.png" class="link-img" />
+                <img src="~static/images/Instagram.png" class="link-img" />
               </a>
             </span>
             <span>
