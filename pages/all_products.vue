@@ -242,7 +242,7 @@
         if (i == 1) {
           axios({
             method: 'GET',
-            url: 'http://mytruestrength.com/backend/product_pagination'
+            url: 'https://mytruestrength.com/backend/product_pagination'
           }).then(res => {
             this.prevLink = res.data.previous
             this.nextLink = res.data.next
@@ -262,7 +262,7 @@
           axios({
             method: 'GET',
             url:
-              'http://mytruestrength.com/backend/product_pagination?offset=' +
+              'https://mytruestrength.com/backend/product_pagination?offset=' +
               (i - 1) * 6
           }).then(res => {
             this.prevLink = res.data.previous
