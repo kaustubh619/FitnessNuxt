@@ -223,7 +223,7 @@
 
     async asyncData() {
       const { data } = await axios.get(
-        'https://mytruestrength.com/backend/carousel_image'
+        'http://mytruestrength.com/backend/carousel_image'
       )
       return { imgs: data }
     },
