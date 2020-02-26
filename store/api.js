@@ -37,7 +37,7 @@ export const state = () => ({
 
   getGalleryImages: url + '/gallery',
 
-  getAllProducts: url,
+  getAllProducts: url + '/',
 
   getProductsWithPagination: url + '/product_pagination',
 
@@ -45,7 +45,7 @@ export const state = () => ({
 
   getProductsWithCategory: url + '/productbycategory/',
 
-  getProductsAll: url,
+  getProductsAll: url + '/',
 
   getPlans: url + '/subscription_plan',
 
